@@ -21,7 +21,7 @@ public class Users {
 		this.pass = pass;
 	}
 	/** Get the user name 
-	 * @return String of the username
+	 * @return String of the username gora 
 	 */
 	public String getUsername() {
 		return username;
