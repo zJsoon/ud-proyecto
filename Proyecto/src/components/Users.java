@@ -52,4 +52,6 @@ public class Users {
 	public String toString() {
 		return username+"\t"+pass;
 	}
+	
+	// comprobacion de conexion
 }
