@@ -1,10 +1,13 @@
 package components;
+import java.time.LocalDateTime;
 
 public class Users {
 	private String username; // username of the user
 	private String pass; // password of the user
 	private String pass_confirm; // password confirm of the user
 	private String email; // email of the user
+	private LocalDateTime creationData;
+	private LocalDateTime modifiedData;
 	
 	/** Default constructor
 	 * 
@@ -25,6 +28,8 @@ public class Users {
 		this.pass = pass;
 		this.pass_confirm = pass_confirm;
 		this.email = email;
+		this.creationData = LocalDateTime.now();
+		this.modifiedData = LocalDateTime.now();
 	}
 	/** Get the user name 
 	 * @return String of the username gora 
@@ -62,7 +67,7 @@ public class Users {
 	}
 	
 	/** Enter the password confirm
-	 * @param username	String of the password confirm
+	 * @param pass_confirm	String of the password confirm
 	 */
 	public void setPass_confirm(String pass_confirm) {
 		this.pass_confirm = pass_confirm;
@@ -76,10 +81,29 @@ public class Users {
 	}
 
 	/** Enter the email
-	 * @param username	String of the email
+	 * @param email	String of the email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	/** Get creation data
+	 * @param creationData	LocalDateTime of creation data
+	 */
+	public LocalDateTime getCreationData() {
+		return creationData;
+	}
+	/** Get modified data
+	 * @param modifiedData	LocalDateTime of last modified
+	 */
+	public LocalDateTime getModifiedData() {
+		return modifiedData;
+	}
+	/** Modified the modifiedData
+	 * @param modifiedData	LocalDateTime of the modifiedData, when the user change the password.
+	 */
+	public void setModifiedData(LocalDateTime modifiedData) {
+		this.modifiedData = LocalDateTime.now();
 	}
 
 	@Override
