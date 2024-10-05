@@ -1,2 +1,2 @@
-user;password;password_confirm;email;
+user;password;password_confirm;email;creationData;modifiedData;
 agc;123;123;email;
