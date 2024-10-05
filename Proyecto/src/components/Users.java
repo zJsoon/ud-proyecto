@@ -31,6 +31,13 @@ public class Users {
 		this.creationData = LocalDateTime.now();
 		this.modifiedData = LocalDateTime.now();
 	}
+	
+	public Users(String username, String pass) {
+		super();
+		this.username = username;
+		this.pass = pass;
+	}
+	
 	/** Get the user name 
 	 * @return String of the username gora 
 	 */
