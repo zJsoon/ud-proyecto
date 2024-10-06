@@ -3,6 +3,7 @@ import javax.swing.*;
 
 public class WindowLogin extends JFrame{
 	private static final long serialVersionUID = 1L;
+	private JFrame wCurrent, wPrevious;
 	public WindowLogin(JFrame wPrevious) {
 		super();
 		
