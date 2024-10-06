@@ -9,7 +9,7 @@ import components.Users;
 
 public class WindowResetPassword extends JFrame{
 	private static final long serialVersionUID = 1L;
-	
+
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
@@ -22,20 +22,20 @@ public class WindowResetPassword extends JFrame{
 	private JTextField txtUsername;
 	
 	private JPasswordField txtPassRecover;
-	//public WindowResetPassword(JFrame wPrevious) {
 	@SuppressWarnings("deprecation")
 	public WindowResetPassword(JFrame wPrevious) {
 		super();
 		
+		/* WINDOW */
 		wCurrent = this;
 		this.wPrevious = wPrevious;
-		
-		setBounds(200,200,600,400);
-		
 		setTitle("UD Students - Reset Password");
+		setBounds(200,200,600,400);
+		setResizable(false);
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
+		/* PANELS */
 		pCenter = new JPanel();
 		pUsername = new JPanel();
 		pPassword = new JPanel();
@@ -44,37 +44,46 @@ public class WindowResetPassword extends JFrame{
 		pEast = new JPanel();
 		pWest = new JPanel();
 		pCenter.setLayout(new GridLayout(2,1));
+		
+		/* BUTTONS */
+		btn_back = new JButton("Back");
+		btn_submit = new JButton("Submit");
+		
+		/* LABELS */
 		lblUsername = new JLabel("USERNAME: ");
 		txtUsername = new JTextField(20);
 		lblPass = new JLabel("PASSWORD: ");
 		txtPassRecover = new JPasswordField(20);
-		btn_back = new JButton("Back");
-		btn_submit = new JButton("Submit");
 		
-		pUsername.add(lblUsername);
-		pUsername.add(txtUsername);
-		pPassword.add(lblPass);
-		pPassword.add(txtPassRecover);
-		
-		pCenter.add(pUsername);
-		pCenter.add(pPassword);
-		
+		/* DEFINIR PANELES PRINCIPALES */
 		getContentPane().add(pCenter, BorderLayout.CENTER);
 		getContentPane().add(pNorth, BorderLayout.NORTH);
 		getContentPane().add(pSouth, BorderLayout.SOUTH);
 		getContentPane().add(pEast, BorderLayout.EAST);
 		getContentPane().add(pWest, BorderLayout.WEST);
 		
-		
+		/* AGREGAR ELEMENTOS A LOS PANELES */
+		pUsername.add(lblUsername);
+		pUsername.add(txtUsername);
+		pPassword.add(lblPass);
+		pPassword.add(txtPassRecover);
+		pCenter.add(pUsername);
+		pCenter.add(pPassword);
 		pSouth.add(btn_back);
 		pSouth.add(btn_submit);
 		
-		
+		/* EVENTS */
+		/* BTN_BACK
+		 * Boton que presionas, oculta la ventana actual y posteriormente activa la ventana anterior.
+		 */
 		btn_back.addActionListener(e -> {
 			wCurrent.dispose();
 			wPrevious.setVisible(true);
 		});
 		
+		/* BTN_SUBMIT
+		 * Boton que presionas, mira si existe el usuario y en ese caso cambia los datos que haya en el fichero.
+		 */
 		btn_submit.addActionListener(e -> {
 			Boolean find = false;
 			
@@ -83,10 +92,11 @@ public class WindowResetPassword extends JFrame{
 			Users u = new Users(user, password);
 			
 			String linea;
+			String fich = "./src/data/db-users.txt";
 			String [] sp = null;
 			
 			try {
-				BufferedReader br = new BufferedReader(new FileReader("./src/data/db-users.txt"));
+				BufferedReader br = new BufferedReader(new FileReader(fich));
 				
 				while(!find && (linea=br.readLine())!=null) {
 					sp = linea.split(";");
@@ -98,6 +108,7 @@ public class WindowResetPassword extends JFrame{
 				}
 				if(find) {
 					sp[1] = password;
+					sp[2] = password;
 					sp[5] = LocalDateTime.now().toString();
 					
 					JOptionPane.showMessageDialog(null, "You have successfully change your password.", "SUCCESSFUL!", JOptionPane.INFORMATION_MESSAGE);
@@ -105,7 +116,7 @@ public class WindowResetPassword extends JFrame{
 				else{
 					JOptionPane.showMessageDialog(null, "Not registered.", "ERROR.", JOptionPane.ERROR_MESSAGE);
 				}
-				
+
 				br.close();
 			} catch (FileNotFoundException err) {
 				err.printStackTrace();
@@ -114,6 +125,8 @@ public class WindowResetPassword extends JFrame{
 			}
 			
 		});
+		
+		/* VISIBILIDAD */
 		setVisible(true);
 	}
 }
