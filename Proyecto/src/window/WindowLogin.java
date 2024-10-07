@@ -1,5 +1,6 @@
 package window;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -57,6 +58,12 @@ public class WindowLogin extends JFrame{
 	    
 	    panel.add(panelNorth, BorderLayout.NORTH);
 	    panel.add(panelSouth, BorderLayout.SOUTH);
+	    
+	    
+	    JTextField titleText = new JTextField("UD Student: Login");
+	    titleText.setEditable(false);
+	    titleText.setFont(new Font("Calibri", Font.CENTER_BASELINE, 50));
+	    titleText.setBackground(Color.GRAY);
 		
 	    
 	    setVisible(true);
