@@ -50,6 +50,11 @@ public class WindowLogin extends JFrame{
 	    
 	    JPanel panelSouth = new JPanel(new FlowLayout(FlowLayout.CENTER,50,150));
 		
-		setVisible(true);
+	    panelSouth.add(loginBotton);
+	    panelSouth.add(exitBotton);
+	    panelSouth.add(registerBotton);
+		
+	    
+	    setVisible(true);
 	}
 }
