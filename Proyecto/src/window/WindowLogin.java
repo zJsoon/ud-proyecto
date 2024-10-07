@@ -1,4 +1,6 @@
 package window;
+import java.awt.Font;
+
 import javax.swing.*;
 
 public class WindowLogin extends JFrame{
@@ -12,6 +14,11 @@ public class WindowLogin extends JFrame{
 		setTitle("UD Students - Main");
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
+		
+		JLabel userLabel = new JLabel("Username");
+	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		
 		setVisible(true);
 	}
