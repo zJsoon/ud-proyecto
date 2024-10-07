@@ -18,6 +18,10 @@ public class WindowLogin extends JFrame{
 		JLabel userLabel = new JLabel("Username");
 	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    
+	    JTextField userText = new JTextField();
+	    
+	    
 		
 		
 		setVisible(true);
