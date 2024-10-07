@@ -1,4 +1,5 @@
 package window;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -53,6 +54,9 @@ public class WindowLogin extends JFrame{
 	    panelSouth.add(loginBotton);
 	    panelSouth.add(exitBotton);
 	    panelSouth.add(registerBotton);
+	    
+	    panel.add(panelNorth, BorderLayout.NORTH);
+	    panel.add(panelSouth, BorderLayout.SOUTH);
 		
 	    
 	    setVisible(true);
