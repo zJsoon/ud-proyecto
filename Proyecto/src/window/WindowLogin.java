@@ -38,6 +38,9 @@ public class WindowLogin extends JFrame{
 	    
 	    JPanel panel = new JPanel();
 	    panel.setLayout(new GridLayout(2,1));
+	    
+	    JPanel panelNorth = new JPanel();
+	    panelNorth.setLayout(new GridLayout(2,2));
 		
 		setVisible(true);
 	}
