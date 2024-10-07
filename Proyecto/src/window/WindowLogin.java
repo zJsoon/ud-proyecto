@@ -1,4 +1,5 @@
 package window;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -46,6 +47,8 @@ public class WindowLogin extends JFrame{
 	    panelNorth.add(userText);
 	    panelNorth.add(passwordLabel);
 	    panelNorth.add(passwordText);
+	    
+	    JPanel panelSouth = new JPanel(new FlowLayout(FlowLayout.CENTER,50,150));
 		
 		setVisible(true);
 	}
