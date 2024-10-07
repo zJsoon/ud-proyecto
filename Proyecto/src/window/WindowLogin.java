@@ -64,6 +64,8 @@ public class WindowLogin extends JFrame{
 	    titleText.setEditable(false);
 	    titleText.setFont(new Font("Calibri", Font.CENTER_BASELINE, 50));
 	    titleText.setBackground(Color.GRAY);
+	    
+	    add(titleText,BorderLayout.NORTH);
 		
 	    
 	    setVisible(true);
