@@ -1,5 +1,6 @@
 package window;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.*;
 
@@ -34,6 +35,9 @@ public class WindowLogin extends JFrame{
 	    JButton registerBotton = new JButton("Register");
 	    registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 		
+	    
+	    JPanel panel = new JPanel();
+	    panel.setLayout(new GridLayout(2,1));
 		
 		setVisible(true);
 	}
