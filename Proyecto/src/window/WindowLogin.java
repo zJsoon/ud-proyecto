@@ -21,6 +21,10 @@ public class WindowLogin extends JFrame{
 	    
 	    JTextField userText = new JTextField();
 	    
+	    JLabel passwordLabel = new JLabel("Password");
+	    passwordLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    
 	    
 		
 		
