@@ -66,6 +66,7 @@ public class WindowLogin extends JFrame{
 	    titleText.setBackground(Color.GRAY);
 	    
 	    add(titleText,BorderLayout.NORTH);
+	    add(panel,BorderLayout.CENTER);
 		
 	    
 	    setVisible(true);
