@@ -3,7 +3,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 
 import javax.swing.*;
 
@@ -15,10 +17,13 @@ public class WindowLogin extends JFrame{
 		
 		setBounds(200,200,600,400);
 		
+		
 		setTitle("UD Students - Main");
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
+		
+		// Creacion de JLabel y JText 
 		JLabel userLabel = new JLabel("Username");
 	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -30,6 +35,7 @@ public class WindowLogin extends JFrame{
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    
 	    JTextField passwordText = new JTextField();
+	    
 	    
 	    JButton loginBotton = new JButton("Login");
 	    loginBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
@@ -70,5 +76,6 @@ public class WindowLogin extends JFrame{
 		
 	    
 	    setVisible(true);
+	
 	}
 }
