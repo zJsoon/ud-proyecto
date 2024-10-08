@@ -37,6 +37,7 @@ public class WindowLogin extends JFrame{
 	    JTextField passwordText = new JTextField();
 	    
 	    
+	    // Creacion de Botones
 	    JButton loginBotton = new JButton("Login");
 	    loginBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    JButton exitBotton = new JButton("Exit");
