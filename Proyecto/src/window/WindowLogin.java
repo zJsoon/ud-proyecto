@@ -5,7 +5,9 @@ import javax.swing.*;
 
 public class WindowLogin extends JFrame{
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
+	
 	public WindowLogin(JFrame wPrevious) {
 		super();
 		
