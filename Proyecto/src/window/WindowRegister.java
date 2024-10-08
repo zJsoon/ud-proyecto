@@ -1,6 +1,9 @@
 package window;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.*;
 
@@ -54,6 +57,45 @@ public class WindowRegister extends JFrame{
 	    titleText.setEditable(false);
 	    titleText.setFont(new Font("Calibri", Font.CENTER_BASELINE, 50));
 	    titleText.setBackground(Color.GRAY);
+	    
+	    JPanel panelNorth = new JPanel();
+	    panelNorth.setLayout(new GridLayout(2,1));
+	    
+	    panelNorth.add(userLabel);
+	    panelNorth.add(emailLabel);
+	    panelNorth.add(userText);
+	    panelNorth.add(emailText);
+	    
+	    JPanel panelCenter = new JPanel();
+	    panelCenter.setLayout(new GridLayout(2,1));
+	   
+	    
+	    JPanel panel1Center = new JPanel();
+	    panel1Center.setLayout(new GridLayout(2,1));
+	    panel1Center.add(passwordLabel);
+	    panel1Center.add(passwordText);
+	    
+	    JPanel panel2Center = new JPanel();
+	    panel2Center.setLayout(new GridLayout(2,1));
+	    panel2Center.add(passwordComfirmationLabel);
+	    panel2Center.add(passwordConfirmationText);
+	    
+	    panelCenter.add(panel1Center,BorderLayout.NORTH);
+	    panelCenter.add(panel2Center,BorderLayout.SOUTH);
+	    
+	    JPanel panelSouth = new JPanel();
+	    panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER,50,150));
+	    
+	    panelSouth.add(registerBotton);
+	    panelSouth.add(exitBotton);
+	    panelSouth.add(loginBotton);
+	    
+	    JPanel panelRegister = new JPanel();
+	    panelRegister.setLayout(new GridLayout(3,1));
+	    panelRegister.add(panelNorth);
+	    panelRegister.add(panelCenter);
+	    panelRegister.add(panelSouth);
+	    
 		
 		setVisible(true);
 	}
