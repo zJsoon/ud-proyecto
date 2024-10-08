@@ -8,6 +8,7 @@ public class Users {
 	private String email; // email of the user
 	private LocalDateTime creationData;
 	private LocalDateTime modifiedData;
+	private Boolean admin;
 	
 	/** Default constructor
 	 * 
@@ -113,6 +114,19 @@ public class Users {
 		this.modifiedData = LocalDateTime.now();
 	}
 
+	/** Get admin
+	 * @param admin	Boolean if is admin
+	 */
+	public Boolean getAdmin() {
+		return admin;
+	}
+	/** Modified admin
+	 * @param admin	Boolean if is admin
+	 */
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+	
 	@Override
 	public String toString() {
 		return username+"\t"+pass;
