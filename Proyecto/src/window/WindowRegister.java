@@ -1,4 +1,5 @@
 package window;
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.*;
@@ -48,6 +49,11 @@ public class WindowRegister extends JFrame{
 	    JButton registerBotton = new JButton("Register");
 	    registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    
+	    
+	    JTextField titleText = new JTextField("UD Student: Student Register");
+	    titleText.setEditable(false);
+	    titleText.setFont(new Font("Calibri", Font.CENTER_BASELINE, 50));
+	    titleText.setBackground(Color.GRAY);
 		
 		setVisible(true);
 	}
