@@ -96,6 +96,9 @@ public class WindowRegister extends JFrame{
 	    panelRegister.add(panelCenter);
 	    panelRegister.add(panelSouth);
 	    
+	    
+	    add(titleText,BorderLayout.NORTH);
+	    this.add(panelRegister,BorderLayout.CENTER);
 		
 		setVisible(true);
 	}
