@@ -1,10 +1,6 @@
 package window;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 
+import java.awt.*;
 import javax.swing.*;
 
 public class WindowLogin extends JFrame{
@@ -13,12 +9,18 @@ public class WindowLogin extends JFrame{
 	public WindowLogin(JFrame wPrevious) {
 		super();
 		
+		wCurrent = this;
+		this.wPrevious = wPrevious;
+		
 		setBounds(200,200,600,400);
+		
 		
 		setTitle("UD Students - Main");
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
+		
+		// Creacion de JLabel y JText 
 		JLabel userLabel = new JLabel("Username");
 	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -31,6 +33,8 @@ public class WindowLogin extends JFrame{
 	    
 	    JTextField passwordText = new JTextField();
 	    
+	    
+	    // Creacion de Botones
 	    JButton loginBotton = new JButton("Login");
 	    loginBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    JButton exitBotton = new JButton("Exit");
@@ -38,7 +42,7 @@ public class WindowLogin extends JFrame{
 	    JButton registerBotton = new JButton("Register");
 	    registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 		
-	    
+	    // Creacion de paneles
 	    JPanel panel = new JPanel();
 	    panel.setLayout(new GridLayout(2,1));
 	    
@@ -50,7 +54,7 @@ public class WindowLogin extends JFrame{
 	    panelNorth.add(passwordLabel);
 	    panelNorth.add(passwordText);
 	    
-	    JPanel panelSouth = new JPanel(new FlowLayout(FlowLayout.CENTER,50,150));
+	    JPanel panelSouth = new JPanel();
 		
 	    panelSouth.add(loginBotton);
 	    panelSouth.add(exitBotton);
@@ -67,8 +71,10 @@ public class WindowLogin extends JFrame{
 	    
 	    add(titleText,BorderLayout.NORTH);
 	    add(panel,BorderLayout.CENTER);
-		
+		add(panelSouth, BorderLayout.SOUTH);
+	    
 	    
 	    setVisible(true);
+	
 	}
 }
