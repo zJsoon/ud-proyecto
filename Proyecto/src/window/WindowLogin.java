@@ -45,7 +45,7 @@ public class WindowLogin extends JFrame{
 	    JButton registerBotton = new JButton("Register");
 	    registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 		
-	    
+	    // Creacion de paneles
 	    JPanel panel = new JPanel();
 	    panel.setLayout(new GridLayout(2,1));
 	    
