@@ -102,8 +102,6 @@ public class WindowResetPassword extends JFrame{
 					sp = linea.split(";");
 					if(u.getUsername().equals(sp[0])) {
 						find = true;
-						wCurrent.dispose();
-						new WindowLogin(wCurrent);
 					}
 				}
 				if(find) {
@@ -116,6 +114,9 @@ public class WindowResetPassword extends JFrame{
 				else{
 					JOptionPane.showMessageDialog(null, "Not registered.", "ERROR.", JOptionPane.ERROR_MESSAGE);
 				}
+				
+				wCurrent.dispose();
+				new WindowLogin(wCurrent);
 
 				br.close();
 			} catch (FileNotFoundException err) {
