@@ -1,0 +1,2 @@
+123	elJurado.jpg	El Jurado	2019	5	45	1	5	La mejor serie del siglo
+123	dexter.jpg	Dexter	2006	5	52	99	1	No me ha gustado nada

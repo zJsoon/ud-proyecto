@@ -1,0 +1,5 @@
+NOMBRE-FICHERO	TITULO	AÑO CALIFICACION	DURACION
+rompeRalph.jpg	¡Rompe Ralph!	2012	5	101
+aCiegas.jpg	A ciegas	2018	5	124
+arq.jpg	ARQ	2016	6	90
+caos.jpg	Caos	2005	5	105
