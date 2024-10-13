@@ -1,105 +1,134 @@
 package window;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-
+import java.awt.*;
 import javax.swing.*;
 
 public class WindowRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
+	
+	private JPanel pNorth, panelArriba, panelCenter, panel1Center, panel2Center, panelSouth;
+	
+	private JButton exitBotton, registerBotton;
+	
+	private JLabel lblNorthText, userLabel, emailLabel, passwordLabel, passwordComfirmationLabel;
+	
+	private JTextField userText, emailText, passwordText, passwordConfirmationText;
+	
 	public WindowRegister(JFrame wPrevious) {
 		super();
 		
-		setBounds(200,200,600,400);
+		/* WINDOW */
+		wCurrent = this;
+		this.wPrevious = wPrevious;
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("UD Students - Register");
+		setBounds(200, 200, 600, 400);
+		setResizable(false);
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
-		JLabel userLabel = new JLabel("Username");
-	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+		/* PANELS */
+		panelArriba = new JPanel();
+		panelCenter = new JPanel();
+		panel1Center = new JPanel();
+		panel2Center = new JPanel();
+		panelSouth = new JPanel();
+		pNorth = new JPanel();
+		
+		/* PANELS MODIFICATIONS */
+		panelArriba.setLayout(new GridLayout(2,1));
+		panelCenter.setLayout(new GridLayout(3,1));
+		panel1Center.setLayout(new GridLayout(2,1));
+		panel2Center.setLayout(new GridLayout(2,1));
+		
+		/* BUTTONS */
+		registerBotton = new JButton("Register");
+		exitBotton = new JButton("Exit");
+		
+		/* BUTTONS MODIFICATIONS */
+		registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+		exitBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+		
+		/* TEXT FIELD */
+		userText = new JTextField();
+		emailText = new JTextField();
+		passwordText = new JTextField();
+		passwordConfirmationText = new JTextField();
+		
+		/* LABELS */
+		userLabel = new JLabel("Username");
+		emailLabel = new JLabel("Email");
+		passwordLabel = new JLabel("Password");
+		passwordComfirmationLabel = new JLabel("Repeat password");
+		lblNorthText = new JLabel("UD Students - Register");
+		
+		/* LABELS MODIFICATIONS */
+		userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    
-	    JTextField userText = new JTextField();
-	    
-	    
-	    JLabel emailLabel = new JLabel("Email");
 	    emailLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    emailLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    
-	    JTextField emailText = new JTextField();
-	    
-	    
-	    JLabel passwordLabel = new JLabel("Password");
 	    passwordLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    
-	    JTextField passwordText = new JTextField();
-	    
-	    JLabel passwordComfirmationLabel = new JLabel("Repeat password");
 	    passwordComfirmationLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    passwordComfirmationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
+		lblNorthText.setForeground(Color.CYAN);
+		
+		/* DEFINIR PANELES PRINCIPALES */
+	    getContentPane().add(panelCenter, BorderLayout.CENTER);
+	    getContentPane().add(panelSouth, BorderLayout.SOUTH);
+	    getContentPane().add(pNorth, BorderLayout.NORTH);
 	    
-	    JTextField passwordConfirmationText = new JTextField();
-	    
-	    
-	    JButton loginBotton = new JButton("Login");
-	    loginBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
-	    JButton exitBotton = new JButton("Exit");
-	    exitBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
-	    JButton registerBotton = new JButton("Register");
-	    registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
-	    
-	    
-	    JTextField titleText = new JTextField("UD Student: Student Register");
-	    titleText.setEditable(false);
-	    titleText.setFont(new Font("Calibri", Font.CENTER_BASELINE, 50));
-	    titleText.setBackground(Color.GRAY);
-	    
-	    JPanel panelNorth = new JPanel();
-	    panelNorth.setLayout(new GridLayout(2,1));
-	    
-	    panelNorth.add(userLabel);
-	    panelNorth.add(emailLabel);
-	    panelNorth.add(userText);
-	    panelNorth.add(emailText);
-	    
-	    JPanel panelCenter = new JPanel();
-	    panelCenter.setLayout(new GridLayout(2,1));
-	   
-	    
-	    JPanel panel1Center = new JPanel();
-	    panel1Center.setLayout(new GridLayout(2,1));
+		/* AGREGAR ELEMENTOS A LOS PANELES */
+	    panelArriba.add(userLabel);
+	    panelArriba.add(emailLabel);
+	    panelArriba.add(userText);
+	    panelArriba.add(emailText);
 	    panel1Center.add(passwordLabel);
 	    panel1Center.add(passwordText);
-	    
-	    JPanel panel2Center = new JPanel();
-	    panel2Center.setLayout(new GridLayout(2,1));
 	    panel2Center.add(passwordComfirmationLabel);
 	    panel2Center.add(passwordConfirmationText);
-	    
+	    panelCenter.add(panelArriba, BorderLayout.CENTER);
 	    panelCenter.add(panel1Center,BorderLayout.NORTH);
 	    panelCenter.add(panel2Center,BorderLayout.SOUTH);
-	    
-	    JPanel panelSouth = new JPanel();
-	    panelSouth.setLayout(new FlowLayout(FlowLayout.CENTER,50,150));
-	    
 	    panelSouth.add(registerBotton);
 	    panelSouth.add(exitBotton);
-	    panelSouth.add(loginBotton);
+	    pNorth.add(lblNorthText);
 	    
-	    JPanel panelRegister = new JPanel();
-	    panelRegister.setLayout(new GridLayout(3,1));
-	    panelRegister.add(panelNorth);
-	    panelRegister.add(panelCenter);
-	    panelRegister.add(panelSouth);
+		/* EVENTS */
+	    /* BTN_EXIT
+		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
+		 */
+	    exitBotton.addActionListener(e -> {
+			wCurrent.dispose();
+			wPrevious.setVisible(true);
+		});
 	    
-	    
-	    add(titleText,BorderLayout.NORTH);
-	    this.add(panelRegister,BorderLayout.CENTER);
-		
+		/* THREAD CREATE
+		 * Rotacion de texto que pone UD Students - CINEMA
+		 */
+		Runnable r = new Runnable() {
+		    @Override
+		    public void run() {
+		        int x = -lblNorthText.getWidth();
+		        while(true) {
+		            x += 10;
+		            if(x > pNorth.getWidth()) {
+		                x = -lblNorthText.getWidth();
+		            }
+		            lblNorthText.setBounds(x, lblNorthText.getY(), lblNorthText.getWidth(), lblNorthText.getHeight());
+		            try {
+		                Thread.sleep(50);
+		            } catch (InterruptedException e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+		};
+		Thread t = new Thread(r);
+		t.start();
 		setVisible(true);
 	}
 }
