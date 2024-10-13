@@ -10,7 +10,7 @@ import javax.swing.*;
 public class WindowRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JFrame wCurrent, wPrevious;
-	public WindowRegister(JFrame wPrevious) {
+	public WindowRegister(JFrame wPrevious) { 
 		super();
 		
 		setBounds(200,200,600,400);
@@ -18,6 +18,8 @@ public class WindowRegister extends JFrame{
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
+		
+		// Creacion de JLabel y JTextField
 		JLabel userLabel = new JLabel("Username");
 	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
