@@ -12,7 +12,7 @@ public class WindowMain extends JFrame{
 	
 	private JButton btn_login, btn_register;
 	
-	private JLabel lblNothText;
+	private JLabel lblNorthText;
 	
 	public WindowMain() {
 		super();
@@ -40,9 +40,9 @@ public class WindowMain extends JFrame{
 		btn_register = new JButton("Register");
 		
 		/* LABELS */
-		lblNothText = new JLabel("UD Students - CINEMA");
-		lblNothText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
-		lblNothText.setForeground(Color.CYAN);
+		lblNorthText = new JLabel("UD Students - CINEMA");
+		lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
+		lblNorthText.setForeground(Color.CYAN);
 		
 		/* DEFINIR PANELES PRINCIPALES */
 		getContentPane().add(pCenter, BorderLayout.CENTER);
@@ -58,7 +58,7 @@ public class WindowMain extends JFrame{
 		pCenterRight.add(btn_register);
 		pCenter.add(pCenterLeft);
 		pCenter.add(pCenterRight);
-		pNorth.add(lblNothText);
+		pNorth.add(lblNorthText);
 		
 		/* EVENTS */
 		/* BTN_LOGIN
@@ -83,13 +83,13 @@ public class WindowMain extends JFrame{
 		Runnable r = new Runnable() {
 		    @Override
 		    public void run() {
-		        int x = -lblNothText.getWidth();
+		        int x = -lblNorthText.getWidth();
 		        while(true) {
 		            x += 10;
 		            if(x > pNorth.getWidth()) {
-		                x = -lblNothText.getWidth();
+		                x = -lblNorthText.getWidth();
 		            }
-		            lblNothText.setBounds(x, lblNothText.getY(), lblNothText.getWidth(), lblNothText.getHeight());
+		            lblNorthText.setBounds(x, lblNorthText.getY(), lblNorthText.getWidth(), lblNorthText.getHeight());
 		            try {
 		                Thread.sleep(50);
 		            } catch (InterruptedException e) {

@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import window.WindowMain;
+import window.logged.films.WindowFilms;
+import window.logged.series.WindowSeries;
 
 public class WindowLogged extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -66,9 +68,31 @@ public class WindowLogged extends JFrame{
 		pNorth.add(lblNothText);
 		pSouth.add(btn_exit);
 		
+		/* EVENTS */
+		/* BTN_EXIT
+		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
+		 */
 		btn_exit.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowMain();
+			wPrevious.setVisible(true);
+		});
+		
+		/*
+		 * btn_films
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de peliculas
+		 */
+		btn_films.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowFilms(wCurrent);
+		});
+		
+		/*
+		 * btn_series
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de series
+		 */
+		btn_series.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowSeries(wCurrent);
 		});
 		
 		/* THREAD CREATE
