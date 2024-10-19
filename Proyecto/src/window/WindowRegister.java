@@ -6,6 +6,9 @@ public class WindowRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
+
+	
+
 	
 	private JPanel pNorth, panelArriba, panelCenter, panel1Center, panel2Center, panelSouth;
 	
@@ -16,6 +19,7 @@ public class WindowRegister extends JFrame{
 	private JTextField userText, emailText, passwordText, passwordConfirmationText;
 	
 	public WindowRegister(JFrame wPrevious) {
+
 		super();
 		
 		/* WINDOW */
@@ -29,6 +33,12 @@ public class WindowRegister extends JFrame{
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
 		setIconImage(imagen.getImage());
 		
+
+		
+		// Creacion de JLabel y JTextField
+		JLabel userLabel = new JLabel("Username");
+	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+
 		/* PANELS */
 		panelArriba = new JPanel();
 		panelCenter = new JPanel();
@@ -66,6 +76,7 @@ public class WindowRegister extends JFrame{
 		
 		/* LABELS MODIFICATIONS */
 		userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    emailLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    emailLabel.setHorizontalAlignment(SwingConstants.CENTER);
