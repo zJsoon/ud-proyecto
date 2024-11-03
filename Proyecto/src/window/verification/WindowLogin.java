@@ -60,6 +60,7 @@ public class WindowLogin extends JFrame {
 		lblNorthText = new JLabel("UD Students - Login");
 		
 		/* LABELS MODIFICATIONS */
+		lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblResetPassword.setHorizontalAlignment(SwingConstants.CENTER);
