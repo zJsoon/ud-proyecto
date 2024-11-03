@@ -18,8 +18,13 @@ public class Films extends Cinema{
 	 * @param review_public		Films review public or private
 	 * @param duration			Length of the film
 	 */
-	public Films(String title, int yr, int rating, String review, Boolean review_public, int duration) {
-		super(title, yr, rating, review, review_public);
+	public Films(String img, String title, int yr, int rating, String review, Boolean review_public, int duration) {
+		super(img, title, yr, rating, review, review_public);
+		this.duration = duration;
+	}
+	
+	public Films(String img, String title, int yr, int rating,  int duration) {
+		super(img, title, yr, rating);
 		this.duration = duration;
 	}
 

@@ -20,8 +20,14 @@ public class Series extends Cinema{
 	 * @param averageDuration		Average length of the series
 	 * @param seasons				Seasons of the series
 	 */
-	public Series(String title, int yr, int rating, String review, Boolean review_public, int averageDuration, int seasons) {
-		super(title, yr, rating, review, review_public);
+	public Series(String img, String title, int yr, int rating, String review, Boolean review_public, int averageDuration, int seasons) {
+		super(img, title, yr, rating, review, review_public);
+		this.averageDuration = averageDuration;
+		this.seasons = seasons;
+	}
+	
+	public Series(String img, String title, int yr, int rating, int averageDuration, int seasons) {
+		super(img, title, yr, rating);
 		this.averageDuration = averageDuration;
 		this.seasons = seasons;
 	}
