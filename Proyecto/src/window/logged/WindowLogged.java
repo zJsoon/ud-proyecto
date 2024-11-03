@@ -1,10 +1,8 @@
 package window.logged;
 
 import java.awt.*;
-
 import javax.swing.*;
 
-import window.WindowMain;
 import window.logged.films.WindowFilms;
 import window.logged.series.WindowSeries;
 
