@@ -48,9 +48,6 @@ public class WindowLogin extends JFrame {
 		loginBotton = new JButton("Login");
 		exitBotton = new JButton("Exit");
 		
-		/* BUTTONS MODIFICATIONS */
-		loginBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
-		exitBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 		
 		/* TEXT FIELD */
 		userText = new JTextField();
@@ -63,13 +60,10 @@ public class WindowLogin extends JFrame {
 		lblNorthText = new JLabel("UD Students - Login");
 		
 		/* LABELS MODIFICATIONS */
-		userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    passwordLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblResetPassword.setHorizontalAlignment(SwingConstants.CENTER);
 	    lblResetPassword.setVerticalAlignment(SwingConstants.CENTER);
-	    lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 		lblNorthText.setForeground(Color.CYAN);
 	    
 		/* DEFINIR PANELES PRINCIPALES */
