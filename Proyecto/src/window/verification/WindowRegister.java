@@ -37,7 +37,6 @@ public class WindowRegister extends JFrame{
 		
 		// Creacion de JLabel y JTextField
 		userLabel = new JLabel("Username");
-	    userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 
 		/* PANELS */
 		panelArriba = new JPanel();
@@ -56,10 +55,7 @@ public class WindowRegister extends JFrame{
 		/* BUTTONS */
 		registerBotton = new JButton("Register");
 		exitBotton = new JButton("Exit");
-		
-		/* BUTTONS MODIFICATIONS */
-		registerBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
-		exitBotton.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
+	
 		
 		/* TEXT FIELD */
 		userText = new JTextField();
@@ -75,16 +71,11 @@ public class WindowRegister extends JFrame{
 		lblNorthText = new JLabel("UD Students - Register");
 		
 		/* LABELS MODIFICATIONS */
-		userLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 
 	    userLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    emailLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    emailLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    passwordLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    passwordComfirmationLabel.setFont(new Font("Calibri", Font.CENTER_BASELINE, 30));
 	    passwordComfirmationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 		lblNorthText.setForeground(Color.CYAN);
 		
 		/* DEFINIR PANELES PRINCIPALES */
