@@ -3,6 +3,9 @@ package window;
 import java.awt.*;
 import javax.swing.*;
 
+import window.verification.WindowLogin;
+import window.verification.WindowRegister;
+
 public class WindowMain extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
