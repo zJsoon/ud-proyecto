@@ -3,13 +3,17 @@ package window.logged.films;
 import java.awt.*;
 import javax.swing.*;
 
+import window.logged.films.user.WindowViewAllFilms;
+import window.logged.films.user.WindowViewFilmsUser;
+
 public class WindowFilms extends JFrame{
 private static final long serialVersionUID = 1L;
 	
 	private JPanel pNorth, pCentre, pSouth;
 	private JLabel lblNothText;
-	private JButton btnClose, btnReverse, btnAddFilms, btnEditFilms, btnDeleteFilms, btnViewFilms;
+	private JButton btnClose, btnReverse, btnAddFilms, btnEditFilms, btnDeleteFilms, btnViewFilms, btnViewAllFilms;
 	
+	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
 	public WindowFilms(JFrame wPrevious) {
@@ -35,6 +39,7 @@ private static final long serialVersionUID = 1L;
 		pSouth = new JPanel();
 		
 		/*CREATE BUTTONS*/
+		btnViewAllFilms = new JButton("View All Films");
 		btnAddFilms = new JButton("Add Films");
 		btnEditFilms = new JButton("Edit Films");
 		btnDeleteFilms = new JButton("Delete Films");
@@ -50,6 +55,8 @@ private static final long serialVersionUID = 1L;
 		pNorth.setBackground(Color.black);
 		pNorth.add(lblNothText);
 		
+		pCentre.add(btnViewAllFilms);
+		pCentre.add(Box.createRigidArea(new Dimension(10, 10)));
 		pCentre.add(btnAddFilms);
 		pCentre.add(Box.createRigidArea(new Dimension(10, 10)));
 		pCentre.add(btnEditFilms);
@@ -78,10 +85,22 @@ private static final long serialVersionUID = 1L;
 		btnClose.addActionListener(e -> {
 			System.exit(0);
 		});
+		
 		/*BUTTON REVERSE*/
 		btnReverse.addActionListener(e -> {
 			wCurrent.dispose();
 			wPrevious.setVisible(true);
+		});
+		
+		/*BUTTON VIEW FILMS*/
+		btnViewFilms.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowViewFilmsUser(wCurrent);
+		});
+		
+		btnViewAllFilms.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowViewAllFilms(wCurrent);
 		});
 		
 		/*THREAD CREATION*/

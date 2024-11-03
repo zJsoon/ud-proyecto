@@ -3,13 +3,17 @@ package window.logged.series;
 import java.awt.*;
 import javax.swing.*;
 
+import window.logged.series.user.WindowViewAllSeries;
+import window.logged.series.user.WindowViewSeriesUser;
+
 public class WindowSeries extends JFrame{
 private static final long serialVersionUID = 1L;
 	
 	private JPanel pNorth, pCentre, pSouth;
 	private JLabel lblNothText;
-	private JButton btnClose, btnReverse, btnAddSeries, btnEditSeries, btnRemoveSeries, btnViewSeries;
+	private JButton btnClose, btnReverse, btnAddSeries, btnEditSeries, btnRemoveSeries, btnViewSeries, btnViewAllSeries;
 	
+	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
 	public WindowSeries(JFrame wPrevious) {
@@ -35,6 +39,7 @@ private static final long serialVersionUID = 1L;
 		pSouth = new JPanel();
 		
 		/*CREATE BUTTONS*/
+		btnViewAllSeries = new JButton("View All Series");
 		btnAddSeries = new JButton("Add Series");
 		btnEditSeries = new JButton("Edit Series");
 		btnRemoveSeries = new JButton("Delete Series");
@@ -50,6 +55,8 @@ private static final long serialVersionUID = 1L;
 		pNorth.setBackground(Color.black);
 		pNorth.add(lblNothText);
 		
+		pCentre.add(btnViewAllSeries);
+		pCentre.add(Box.createRigidArea(new Dimension(10, 10)));
 		pCentre.add(btnAddSeries);
 		pCentre.add(Box.createRigidArea(new Dimension(10, 10)));
 		pCentre.add(btnEditSeries);
@@ -82,6 +89,16 @@ private static final long serialVersionUID = 1L;
 		btnReverse.addActionListener(e -> {
 			wCurrent.dispose();
 			wPrevious.setVisible(true);
+		});
+		/*BUTTON VIEW SERIES*/
+		btnViewSeries.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowViewSeriesUser(wCurrent);
+		});
+		
+		btnViewAllSeries.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowViewAllSeries(wCurrent);
 		});
 		
 		/*THREAD CREATION*/
