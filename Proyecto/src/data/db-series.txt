@@ -3,5 +3,3 @@ NOMBRE-FICHERO	TITULO	AÑO CALIFICACION	DURACION-PROMEDIA-CAPITULOS	TEMPORADAS
 billions.jpg	Billions	2016	5	56	6
 dexter.jpg	Dexter	2006	5	52	9
 elJurado.jpg	El Jurado	2019	5	45	1
-elJurado.jpg	El Jurado	2019	5	45	1
-elJurado.jpg	El Jurado	2019	5	45	1
