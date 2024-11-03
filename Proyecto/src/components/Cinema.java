@@ -1,6 +1,7 @@
 package components;
 
 public class Cinema {
+	private String imgCover; // Name of the photo of the series
 	private String title; // Cinema title
 	private String review; // Cinema review
 	private int yr; // Year of Cinema
@@ -19,8 +20,9 @@ public class Cinema {
 	 * @param yr				Year
 	 * @param rating			Rating
 	 */
-	public Cinema (String title, int yr, int rating, String review, Boolean review_public) {
+	public Cinema (String imgCover, String title, int yr, int rating, String review, Boolean review_public) {
 		super();
+		this.imgCover = imgCover;
 		this.title = title;
 		this.yr = yr;
 		this.rating = rating;
@@ -28,6 +30,27 @@ public class Cinema {
 		this.review_public = review_public;
 	}
 	
+	public Cinema (String imgCover, String title, int yr, int rating) {
+		super();
+		this.imgCover = imgCover;
+		this.title = title;
+		this.yr = yr;
+		this.rating = rating;
+	}
+	
+	/**	Get the name of the image
+	 * @return	Returns the name of the image plus its extension.
+	 */
+	public String getImgCover() {
+		return imgCover;
+	}
+	
+	/**	Rename the photo
+	 * @param imgCover	New name of the photo
+	 */
+	public void setImgCover(String imgCover) {
+		this.imgCover = imgCover;
+	}
 	
 	/**	Get the name of the title
 	 * @return	Name of the title
