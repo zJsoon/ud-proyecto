@@ -87,6 +87,7 @@ public class CinemaCollections {
 	 * @param nomfich	Name of the file
 	 */
 	public static void loadSeries(String nomfich) {
+		clear();
 		try {
 			Scanner sc = new Scanner(new File(nomfich));
 			@SuppressWarnings("unused")
@@ -155,6 +156,7 @@ public class CinemaCollections {
 	 * @param nomfich	Name of the file
 	 */
 	public static void loadFilms(String nomfich) {
+		clear();
 		try {
 			Scanner sc = new Scanner(new File(nomfich));
 			@SuppressWarnings("unused")
