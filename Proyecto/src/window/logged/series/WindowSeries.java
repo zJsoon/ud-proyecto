@@ -3,6 +3,7 @@ package window.logged.series;
 import java.awt.*;
 import javax.swing.*;
 
+import window.logged.series.user.WindowAddSeriesUser;
 import window.logged.series.user.WindowViewAllSeries;
 import window.logged.series.user.WindowViewSeriesUser;
 
@@ -99,6 +100,12 @@ private static final long serialVersionUID = 1L;
 		btnViewAllSeries.addActionListener(e -> {
 			wCurrent.dispose();
 			new WindowViewAllSeries(wCurrent);
+		});
+		
+		
+		btnAddSeries.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowAddSeriesUser(wCurrent);
 		});
 		
 		/*THREAD CREATION*/

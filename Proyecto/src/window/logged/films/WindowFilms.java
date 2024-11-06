@@ -3,6 +3,7 @@ package window.logged.films;
 import java.awt.*;
 import javax.swing.*;
 
+import window.logged.films.user.WindowAddFilmsUser;
 import window.logged.films.user.WindowViewAllFilms;
 import window.logged.films.user.WindowViewFilmsUser;
 
@@ -103,6 +104,10 @@ private static final long serialVersionUID = 1L;
 			new WindowViewAllFilms(wCurrent);
 		});
 		
+		btnAddFilms.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowAddFilmsUser(wCurrent);
+		});
 		/*THREAD CREATION*/
 		Runnable r = new Runnable() {
 		    @Override
