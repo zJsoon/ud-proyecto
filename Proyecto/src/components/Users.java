@@ -23,7 +23,7 @@ public class Users {
 	 * @param pass_confirm	password confirm of the user
 	 * @param email	email of the user
 	 */
-	public Users(String username, String pass, String pass_confirm, String email) {
+	public Users(String username, String pass, String pass_confirm, String email, boolean admin) {
 		super();
 		this.username = username;
 		this.pass = pass;
@@ -31,6 +31,7 @@ public class Users {
 		this.email = email;
 		this.creationData = LocalDateTime.now();
 		this.modifiedData = LocalDateTime.now();
+		this.admin = admin;
 	}
 	
 	public Users(String username, String pass) {
@@ -38,6 +39,14 @@ public class Users {
 		this.username = username;
 		this.pass = pass;
 	}
+	
+	public Users(String username, String pass, boolean admin) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.admin = admin;
+	}
+	
 	
 	/** Get the user name 
 	 * @return String of the username gora 
