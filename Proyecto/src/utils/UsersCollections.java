@@ -47,7 +47,7 @@ public class UsersCollections {
 		ConnectionDB.ConnectJDBC();
 		
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/users.db");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:resources/db/users_admin.db");
 			System.out.println("He accedido correctamente.");
 			
 			Statement stmt = conn.createStatement();
