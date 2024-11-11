@@ -11,6 +11,7 @@ public class Films extends Cinema{
 	}
 	
 	/** Creation of a new film
+	 * @param img				Films IMG
 	 * @param title				Films title
 	 * @param yr				Year of the film
 	 * @param rating			Films rating
@@ -23,6 +24,13 @@ public class Films extends Cinema{
 		this.duration = duration;
 	}
 	
+	/** Creation of a simple film
+	 * @param img				Films IMG
+	 * @param title				Films title
+	 * @param yr				Year of the film
+	 * @param rating			Films rating
+	 * @param duration			Length of the film
+	 */
 	public Films(String img, String title, int yr, int rating,  int duration) {
 		super(img, title, yr, rating);
 		this.duration = duration;

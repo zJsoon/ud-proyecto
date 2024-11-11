@@ -12,6 +12,7 @@ public class Series extends Cinema{
 	}
 
 	/** Creation of a new series
+	 * @param img					Serie IMG
 	 * @param title					Series title
 	 * @param yr					Year of series
 	 * @param rating				Series Rating
@@ -26,6 +27,14 @@ public class Series extends Cinema{
 		this.seasons = seasons;
 	}
 	
+	/** Creation of a simple serie
+	 * @param img					Serie IMG
+	 * @param title					Series title
+	 * @param yr					Year of series
+	 * @param rating				Series Rating
+	 * @param averageDuration		Average length of the series
+	 * @param seasons				Seasons of the series
+	 */
 	public Series(String img, String title, int yr, int rating, int averageDuration, int seasons) {
 		super(img, title, yr, rating);
 		this.averageDuration = averageDuration;
