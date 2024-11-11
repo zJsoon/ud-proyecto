@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.Films;
+import components.Users;
 import utils.CinemaCollections;
 
 public class WindowViewAllFilms extends JFrame{
@@ -25,7 +26,7 @@ public class WindowViewAllFilms extends JFrame{
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
-	public WindowViewAllFilms (JFrame wPrevious) {
+	public WindowViewAllFilms (JFrame wPrevious, Users u) {
 		super();
 		
 		wCurrent = this;

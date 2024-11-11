@@ -3,6 +3,7 @@ package window.logged.films;
 import java.awt.*;
 import javax.swing.*;
 
+import components.Users;
 import window.logged.films.user.WindowAddFilmsUser;
 import window.logged.films.user.WindowViewAllFilms;
 import window.logged.films.user.WindowViewFilmsUser;
@@ -17,7 +18,7 @@ private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
-	public WindowFilms(JFrame wPrevious) {
+	public WindowFilms(JFrame wPrevious, Users u) {
 		super();
 		
 		wCurrent = this;
@@ -96,17 +97,17 @@ private static final long serialVersionUID = 1L;
 		/*BUTTON VIEW FILMS*/
 		btnViewFilms.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowViewFilmsUser(wCurrent);
+			new WindowViewFilmsUser(wCurrent, u);
 		});
 		
 		btnViewAllFilms.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowViewAllFilms(wCurrent);
+			new WindowViewAllFilms(wCurrent, u);
 		});
 		
 		btnAddFilms.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowAddFilmsUser(wCurrent);
+			new WindowAddFilmsUser(wCurrent, u);
 		});
 		/*THREAD CREATION*/
 		Runnable r = new Runnable() {

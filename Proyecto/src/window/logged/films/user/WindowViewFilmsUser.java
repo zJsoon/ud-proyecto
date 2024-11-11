@@ -18,7 +18,7 @@ public class WindowViewFilmsUser extends JFrame {
 	private JScrollPane scroll;
 	private JLabel lblNothText;
 
-	public WindowViewFilmsUser(JFrame wPrevious) {
+	public WindowViewFilmsUser(JFrame wPrevious, Users u) {
 		super();
 		wCurrent = this;
 		this.wPrevious = wPrevious;

@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import components.Films;
 import components.Series;
+import components.Users;
 import utils.CinemaCollections;
 
 @SuppressWarnings("unused") // Dejamos esta linea de codigo porque hay codigo comentado que utiliza los imports y al estar comentado salen warnigns
@@ -21,7 +22,7 @@ public class WindowAddFilmsUser extends JFrame{
 	private JScrollPane scroll;
 	private JLabel lblNothText;
 	
-	public WindowAddFilmsUser(JFrame wPrevious) {
+	public WindowAddFilmsUser(JFrame wPrevious, Users u) {
 		super();
 		wCurrent = this;
 		this.wPrevious = wPrevious;

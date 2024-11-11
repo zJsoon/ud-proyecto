@@ -3,6 +3,7 @@ package window.logged.series;
 import java.awt.*;
 import javax.swing.*;
 
+import components.Users;
 import window.logged.series.user.WindowAddSeriesUser;
 import window.logged.series.user.WindowViewAllSeries;
 import window.logged.series.user.WindowViewSeriesUser;
@@ -17,7 +18,7 @@ private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
-	public WindowSeries(JFrame wPrevious) {
+	public WindowSeries(JFrame wPrevious, Users u) {
 		super();
 		
 		wCurrent = this;
@@ -94,18 +95,18 @@ private static final long serialVersionUID = 1L;
 		/*BUTTON VIEW SERIES*/
 		btnViewSeries.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowViewSeriesUser(wCurrent);
+			new WindowViewSeriesUser(wCurrent, u);
 		});
 		
 		btnViewAllSeries.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowViewAllSeries(wCurrent);
+			new WindowViewAllSeries(wCurrent, u);
 		});
 		
 		
 		btnAddSeries.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowAddSeriesUser(wCurrent);
+			new WindowAddSeriesUser(wCurrent, u);
 		});
 		
 		/*THREAD CREATION*/

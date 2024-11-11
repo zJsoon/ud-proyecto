@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import components.Users;
 import window.logged.WindowLogged;
 
 public class WindowLogin extends JFrame {
@@ -96,6 +97,7 @@ public class WindowLogin extends JFrame {
 		 * Boton que presionas, oculta la ventana actual y posteriormente comprueba que todos los campos esten correctos y en caso de que asi sea inicia sesión.
 		 */
 		loginBotton.addActionListener(e -> {
+			Users u = new Users(userText.getText(), passwordText.getText());
 			// Lógica del BOTÓN btnLogin
 			if(userText.getText().isBlank()) {
 				System.out.println("Rellene el apartado del usuario.");
@@ -111,7 +113,7 @@ public class WindowLogin extends JFrame {
 				JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente.");
 				vaciarCampos(1);
 				wCurrent.dispose(); // Cierro ventana actual
-				new WindowLogged(wCurrent); // Abrimos la ventana2 indicando que su ventana anterior es (this).
+				new WindowLogged(wCurrent, u); // Abrimos la ventana2 indicando que su ventana anterior es (this).
 			} else if(!userText.getText().equals("123")) {
 				System.out.println("Usuario incorrecto.");					
 				JOptionPane.showMessageDialog(null, "Usuario incorrecto.");

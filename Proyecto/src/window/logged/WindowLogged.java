@@ -3,6 +3,7 @@ package window.logged;
 import java.awt.*;
 import javax.swing.*;
 
+import components.Users;
 import window.logged.films.WindowFilms;
 import window.logged.series.WindowSeries;
 
@@ -17,7 +18,7 @@ public class WindowLogged extends JFrame{
 	
 	private JLabel lblNothText;
 	
-	public WindowLogged(JFrame wPrevious) {
+	public WindowLogged(JFrame wPrevious, Users u) {
 		super();
 		
 		wCurrent = this;
@@ -81,7 +82,7 @@ public class WindowLogged extends JFrame{
 		 */
 		btn_films.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowFilms(wCurrent);
+			new WindowFilms(wCurrent, u);
 		});
 		
 		/*
@@ -90,7 +91,7 @@ public class WindowLogged extends JFrame{
 		 */
 		btn_series.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowSeries(wCurrent);
+			new WindowSeries(wCurrent, u);
 		});
 		
 		/* THREAD CREATE

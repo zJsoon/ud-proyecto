@@ -18,7 +18,7 @@ public class WindowViewSeriesUser extends JFrame{
 	private JScrollPane scroll;
 	private JLabel lblNothText;
 	
-	public WindowViewSeriesUser (JFrame wPrevious) {
+	public WindowViewSeriesUser (JFrame wPrevious, Users u) {
 		super();
 		wCurrent = this;
 		this.wPrevious = wPrevious;
