@@ -22,6 +22,7 @@ public class Users {
 	 * @param pass	password of the user
 	 * @param pass_confirm	password confirm of the user
 	 * @param email	email of the user
+	 * @param admin true or false
 	 */
 	public Users(String username, String pass, String pass_confirm, String email, boolean admin) {
 		super();
@@ -34,12 +35,37 @@ public class Users {
 		this.admin = admin;
 	}
 	
+	/**	Create user without admin
+	 * @param username	user name of the user
+	 * @param pass	password of the user
+	 * @param pass_confirm	password confirm of the user
+	 * @param email	email of the user
+	 */
+	public Users(String username, String pass, String pass_confirm, String email) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.pass_confirm = pass_confirm;
+		this.email = email;
+		this.creationData = LocalDateTime.now();
+		this.modifiedData = LocalDateTime.now();
+	}
+	
+	/**	Create user for verification login
+	 * @param username	user name of the user
+	 * @param pass	password of the user
+	 */
 	public Users(String username, String pass) {
 		super();
 		this.username = username;
 		this.pass = pass;
 	}
 	
+	/**	Create user for admin windows
+	 * @param username	user name of the user
+	 * @param pass	password of the user
+	 * @param admin true or false
+	 */
 	public Users(String username, String pass, boolean admin) {
 		super();
 		this.username = username;
