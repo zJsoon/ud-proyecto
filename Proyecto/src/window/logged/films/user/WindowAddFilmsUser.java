@@ -9,7 +9,7 @@ import javax.swing.*;
 import components.Films;
 import components.Series;
 import components.Users;
-import utils.CinemaCollections;
+import utils.collections.CinemaCollections;
 
 @SuppressWarnings("unused") // Dejamos esta linea de codigo porque hay codigo comentado que utiliza los imports y al estar comentado salen warnigns
 public class WindowAddFilmsUser extends JFrame{

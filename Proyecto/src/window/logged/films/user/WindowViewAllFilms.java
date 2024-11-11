@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 import components.Films;
 import components.Users;
-import utils.CinemaCollections;
+import utils.collections.CinemaCollections;
 
 public class WindowViewAllFilms extends JFrame{
 	private static final long serialVersionUID = 1L;

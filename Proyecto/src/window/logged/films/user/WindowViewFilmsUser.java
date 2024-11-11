@@ -3,9 +3,9 @@ package window.logged.films.user;
 import java.awt.*;
 import javax.swing.*;
 
-import utils.CinemaCollections;
 import components.Films;
 import components.Users;
+import utils.collections.CinemaCollections;
 
 public class WindowViewFilmsUser extends JFrame {
 	private static final long serialVersionUID = 1L;

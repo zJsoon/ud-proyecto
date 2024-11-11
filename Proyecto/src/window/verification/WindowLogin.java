@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import components.Users;
-import utils.UsersCollections;
+import utils.collections.UsersCollections;
 import window.logged.WindowLogged;
 import window.logged.admin.WindowAdmin;
 
