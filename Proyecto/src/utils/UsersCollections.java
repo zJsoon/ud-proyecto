@@ -7,8 +7,8 @@ import components.Users;
 import db.ConnectionDB;
 
 public class UsersCollections {
-	private boolean verified = false;
-	private boolean adminVerified = false;
+	private static boolean verified = false;
+	private static boolean adminVerified = false;
 	
 	/**
 	 * Verify if user is register
@@ -16,7 +16,7 @@ public class UsersCollections {
 	 * @param passw			password of the JPasswordField
 	 * @return verified 	true(if it is regiter & username&&passw is the same), false(not register || username||passw isnt same)
 	 */
-	public boolean verificationUser(String u_id, String passw) {
+	public static boolean verificationUser(String u_id, String passw) {
 		ConnectionDB.ConnectJDBC();
 		
 		try {
@@ -54,7 +54,7 @@ public class UsersCollections {
 	 * @param u_id				username of the user to verify if it is admin
 	 * @return adminVerified	true (is admin), false (isnt admin)
 	 */
-	public boolean userIsAdmin(String u_id) {
+	public static boolean userIsAdmin(String u_id) {
 		ConnectionDB.ConnectJDBC();
 		
 		try {
