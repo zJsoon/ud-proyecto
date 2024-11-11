@@ -9,6 +9,7 @@ import utils.collections.UsersCollections;
 import window.logged.WindowLogged;
 import window.logged.admin.WindowAdmin;
 
+@SuppressWarnings("unused")
 public class WindowLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
