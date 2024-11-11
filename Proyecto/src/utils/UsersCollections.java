@@ -10,6 +10,12 @@ public class UsersCollections {
 	private boolean verified = false;
 	private boolean adminVerified = false;
 	
+	/**
+	 * Verify if user is register
+	 * @param u_id			username of the JTextField
+	 * @param passw			password of the JPasswordField
+	 * @return verified 	true(if it is regiter & username&&passw is the same), false(not register || username||passw isnt same)
+	 */
 	public boolean verificationUser(String u_id, String passw) {
 		ConnectionDB.ConnectJDBC();
 		
@@ -43,6 +49,11 @@ public class UsersCollections {
 		return verified;
 	}
 	
+	/**
+	 * 
+	 * @param u_id				username of the user to verify if it is admin
+	 * @return adminVerified	true (is admin), false (isnt admin)
+	 */
 	public boolean userIsAdmin(String u_id) {
 		ConnectionDB.ConnectJDBC();
 		
