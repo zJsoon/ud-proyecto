@@ -1,4 +1,4 @@
-package window.logged.films.user;
+package window.logged.users.films;
 
 import java.awt.*;
 import javax.swing.*;

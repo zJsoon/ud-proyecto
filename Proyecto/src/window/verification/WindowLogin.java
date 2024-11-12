@@ -6,8 +6,8 @@ import javax.swing.*;
 
 import components.Users;
 import utils.collections.UsersCollections;
-import window.logged.WindowLogged;
 import window.logged.admin.WindowAdmin;
+import window.logged.users.WindowLogged;
 
 @SuppressWarnings("unused")
 public class WindowLogin extends JFrame {
