@@ -32,7 +32,7 @@ public class Users {
 		this.email = email;
 		this.creationData = LocalDateTime.now();
 		this.modifiedData = LocalDateTime.now();
-		this.admin = admin;
+		this.admin = false;
 	}
 	
 	/**	Create user without admin

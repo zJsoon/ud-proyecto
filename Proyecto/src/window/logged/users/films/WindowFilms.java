@@ -1,12 +1,9 @@
-package window.logged.films;
+package window.logged.users.films;
 
 import java.awt.*;
 import javax.swing.*;
 
 import components.Users;
-import window.logged.films.user.WindowAddFilmsUser;
-import window.logged.films.user.WindowViewAllFilms;
-import window.logged.films.user.WindowViewFilmsUser;
 
 public class WindowFilms extends JFrame{
 private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package window.logged.series.user;
+package window.logged.users.series;
 
 import java.awt.*;
 import javax.swing.*;

@@ -1,12 +1,9 @@
-package window.logged.series;
+package window.logged.users.series;
 
 import java.awt.*;
 import javax.swing.*;
 
 import components.Users;
-import window.logged.series.user.WindowAddSeriesUser;
-import window.logged.series.user.WindowViewAllSeries;
-import window.logged.series.user.WindowViewSeriesUser;
 
 public class WindowSeries extends JFrame{
 private static final long serialVersionUID = 1L;

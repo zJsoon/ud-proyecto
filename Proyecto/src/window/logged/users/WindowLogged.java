@@ -1,11 +1,11 @@
-package window.logged;
+package window.logged.users;
 
 import java.awt.*;
 import javax.swing.*;
 
 import components.Users;
-import window.logged.films.WindowFilms;
-import window.logged.series.WindowSeries;
+import window.logged.users.films.WindowFilms;
+import window.logged.users.series.WindowSeries;
 
 public class WindowLogged extends JFrame{
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package window.logged.films.user;
+package window.logged.users.series;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,13 +6,12 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-import components.Films;
 import components.Series;
 import components.Users;
 import utils.collections.CinemaCollections;
 
 @SuppressWarnings("unused") // Dejamos esta linea de codigo porque hay codigo comentado que utiliza los imports y al estar comentado salen warnigns
-public class WindowAddFilmsUser extends JFrame{
+public class WindowAddSeriesUser extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private JFrame wCurrent, wPrevious;
@@ -22,7 +21,7 @@ public class WindowAddFilmsUser extends JFrame{
 	private JScrollPane scroll;
 	private JLabel lblNothText;
 	
-	public WindowAddFilmsUser(JFrame wPrevious, Users u) {
+	public WindowAddSeriesUser(JFrame wPrevious, Users u) {
 		super();
 		wCurrent = this;
 		this.wPrevious = wPrevious;
@@ -33,7 +32,7 @@ public class WindowAddFilmsUser extends JFrame{
 		setLocationRelativeTo(null);
 		
 		/*TITLE*/
-		setTitle("TV | Films DataBase - Films Add");
+		setTitle("TV | Films DataBase - Series Add");
 		
 		/*IMG TITLE*/
 		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
@@ -45,7 +44,7 @@ public class WindowAddFilmsUser extends JFrame{
 		scroll = new JScrollPane(pCenter);
 		
 		/*ADD COMPONENTS*/
-		lblNothText = new JLabel("UD Students - Films Add");
+		lblNothText = new JLabel("UD Students - Series Add");
 		lblNothText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 		lblNothText.setForeground(Color.CYAN);
 		pNorth.add(lblNothText);
@@ -58,7 +57,7 @@ public class WindowAddFilmsUser extends JFrame{
 		btnClose = new JButton("CLOSE");
 		pSouth.add(btnClose);
 		
-		loadFotos("data/db-films.txt");
+		loadFotos("data/db-series.txt");
 		
 		/*CREATE THREAD*/
 		Runnable r = new Runnable() {
@@ -98,18 +97,18 @@ public class WindowAddFilmsUser extends JFrame{
 				JPanel pFoto = (JPanel) pCenter.getComponentAt(p);
 				JLabel lblFoto = (JLabel) pFoto.getComponent(0);
 				ImageIcon im = (ImageIcon) lblFoto.getIcon();
-				Films films = CinemaCollections.getFilms(im.getDescription());
+				Series serie = CinemaCollections.getSeries(im.getDescription());
 				try {
-					PrintWriter pw = new PrintWriter(new FileWriter("data/db-users-films.txt", true));
-					Scanner sc = new Scanner(new File("data/db-users-films.txt"));
+					PrintWriter pw = new PrintWriter(new FileWriter("data/db-users-series.txt", true));
+					Scanner sc = new Scanner(new File("data/db-users-series.txt"));
 					while(sc.hasNextLine()) {
 						String linea = sc.nextLine();
 						String [] partes = linea.split("\t");
-						if(partes[0].equals(u.getUsername()) && partes[1].equals(films.getImgCover())) {
+						if(partes[0].equals(u.getUsername()) && partes[1].equals(serie.getImgCover())) {
 							JOptionPane.showMessageDialog(null, "The serie already added.", "Action blocked", JOptionPane.ERROR_MESSAGE);
 							break;
 						}else {							
-							pw.println(u.getUsername() + films.getImgCover() + "\t" + films.getTitle() + "\t" + films.getYr() + "\t" + films.getRating() +  "\t" + films.getDuration()););
+							pw.println(u.getUsername() + "\t" + serie.getImgCover() + "\t" + serie.getTitle() + "\t" + serie.getYr() + "\t" + serie.getRating() +  "\t" + serie.getAverageDuration() + "\t" + serie.getSeasons());
 							break;
 						}
 					}
@@ -134,12 +133,12 @@ public class WindowAddFilmsUser extends JFrame{
 	public void loadFotos(String nomfich) {
 		CinemaCollections.clear();
 		CinemaCollections.loadSeries(nomfich);
-		for(Films p: CinemaCollections.getaFilms()) {
+		for(Series s: CinemaCollections.getaSeries()) {
 			JLabel lblFoto = new JLabel();
 			lblFoto.setSize(150,200);
-			ImageIcon im = new ImageIcon("img/films/"+p.getImgCover());
+			ImageIcon im = new ImageIcon("img/series/"+s.getImgCover());
 			ImageIcon imgDimensions = new ImageIcon(im.getImage().getScaledInstance(lblFoto.getWidth(),lblFoto.getHeight(),Image.SCALE_DEFAULT));
-			imgDimensions.setDescription(p.getImgCover());
+			imgDimensions.setDescription(s.getImgCover());
 			lblFoto.setIcon(imgDimensions);
 			JPanel pFoto = new JPanel();
 			pFoto.add(lblFoto);
