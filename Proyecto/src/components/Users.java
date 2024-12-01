@@ -61,6 +61,14 @@ public class Users {
 		this.pass = pass;
 	}
 	
+	/**	Create user
+	 * @param username	user name of the user
+	 */
+	public Users(String username) {
+		super();
+		this.username = username;
+	}
+	
 	/**	Create user for admin windows
 	 * @param username	user name of the user
 	 * @param pass	password of the user
