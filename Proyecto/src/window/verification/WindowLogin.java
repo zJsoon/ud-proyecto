@@ -5,14 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import components.Users;
-import utils.collections.UsersCollections;
+import utils.collections.ConnectionDB;
 import window.logged.admin.WindowAdmin;
 import window.logged.users.WindowLogged;
 
 @SuppressWarnings("unused")
 public class WindowLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
-	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
 	private JPanel pNorth, panel, panelCenter, panelSouth;
@@ -87,6 +86,10 @@ public class WindowLogin extends JFrame {
 	    panel.add(panelCenter, BorderLayout.CENTER);
 	    panel.add(lblResetPassword);
 	    
+	    /* DB */
+	    ConnectionDB db_u = new ConnectionDB();
+	    db_u.connectJDBC("resources/db/db_project.sqbpro");
+	    
 		/* EVENTS */
 	    /* BTN_EXIT
 		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
@@ -101,52 +104,17 @@ public class WindowLogin extends JFrame {
 		 */
 		loginBotton.addActionListener(e -> {
 			Users u = new Users(userText.getText(), passwordText.getText());
-			// Lógica del BOTÓN btnLogin
-			if(userText.getText().isBlank()) {
-				System.out.println("Rellene el apartado del usuario.");
-				JOptionPane.showMessageDialog(null, "Rellene el apartado del usuario.");
-			} else if(passwordText.getText().isBlank()) {
-				System.out.println("Rellene el apartado del password.");					
-				JOptionPane.showMessageDialog(null, "Rellene el apartado del password.");
-			} else if (userText.getText().isBlank() && passwordText.getText().isBlank()) {
-				System.out.println("Rellene los apartados usuario y password.");					
-				JOptionPane.showMessageDialog(null, "Rellene los apartados usuario y password.");					
-			} else if(userText.getText().equals("123") && passwordText.getText().equals("123")) {
+			if(db_u.verificationUser(userText.getText(), passwordText.getText())){
 				System.out.println("Has iniciado sesión correctamente.");
 				JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente.");
 				vaciarCampos(1);
 				wCurrent.dispose(); // Cierro ventana actual
 				new WindowLogged(wCurrent, u); // Abrimos la ventana2 indicando que su ventana anterior es (this).
-			} else if(!userText.getText().equals("123")) {
-				System.out.println("Usuario incorrecto.");					
-				JOptionPane.showMessageDialog(null, "Usuario incorrecto.");
-				vaciarCampos(2);
-			} else if(!passwordText.getText().equals("123")) {
-				System.out.println("Contraseña incorrecta.");
-				JOptionPane.showMessageDialog(null, "Contraseña incorrecta.");
-				vaciarCampos(3);
-			}
-			/*
-			 if(userText.getText().isBlank()) {
-				System.out.println("Rellene el apartado del usuario.");
-				JOptionPane.showMessageDialog(null, "Rellene el apartado del usuario.");
-			} else if(passwordText.getText().isBlank()) {
-				System.out.println("Rellene el apartado del password.");					
-				JOptionPane.showMessageDialog(null, "Rellene el apartado del password.");
-			} else if (userText.getText().isBlank() && passwordText.getText().isBlank()) {
-				System.out.println("Rellene los apartados usuario y password.");					
-				JOptionPane.showMessageDialog(null, "Rellene los apartados usuario y password.");					
-			} else if(UsersCollections.verificationUser(userText.getText(), passwordText.getText())) {
-				System.out.println("Has iniciado sesión correctamente.");
-				JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente.");
+				db_u.disconnectJDBC();
+			} else{
+				JOptionPane.showMessageDialog(null, "Inicio de sesión incorrecto pruebelo de nuevo.");
 				vaciarCampos(1);
-				if(UsersCollections.userIsAdmin(userText.getText())) {
-					new WindowAdmin(wCurrent, u);
-				} else {
-					wCurrent.dispose(); // Cierro ventana actual
-					new WindowLogged(wCurrent, u); // Abrimos la ventana2 indicando que su ventana anterior es (this).					
-				}
-			}*/
+			}
 		});
 		/* lblResetPassword
 		 * Texto a presionar que en caso de hacerlo oculta la ventana actual y posteriormente crea una ventana donde podras cambiar la contraseña.
