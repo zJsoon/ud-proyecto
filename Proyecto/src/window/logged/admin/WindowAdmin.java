@@ -48,16 +48,16 @@ public class WindowAdmin extends JFrame{
 		treeModel = new DefaultTreeModel(raiz);
 		tree = new JTree(treeModel);
 		scrollTree = new JScrollPane(tree);
+		loadTree();
 		pWest.add(scrollTree);
 		
 		/* DB */
 		ConnectionDB db_u = new ConnectionDB();
-		
 		db_u.connectJDBC("resources\\db\\db_proyecto.db");
-		
 		List<Users> lu = db_u.obtainUsers();
 		
-		userModel = new UsersTableModel(lu);
+		/* Creación del TableModel*/
+		userModel = new UsersTableModel(null);
 		userTabla = new JTable(userModel);
 		userScroll = new JScrollPane(userTabla);
 	    
@@ -70,6 +70,21 @@ public class WindowAdmin extends JFrame{
 			if(p.equals("user")) {
 				userModel = new UsersTableModel(lu);
 				userTabla.setModel(userModel);
+			} else if (p.equals("admins")) {
+				userModel = new UsersTableModel(null);
+				userTabla.setModel(userModel);
+			} else if (p.equals("series")) {
+				userModel = new UsersTableModel(null);
+				userTabla.setModel(userModel);
+			} else if (p.equals("films")) {
+				userModel = new UsersTableModel(null);
+				userTabla.setModel(userModel);
+			} else if (p.equals("series_users")) {
+				userModel = new UsersTableModel(null);
+				userTabla.setModel(userModel);
+			} else if (p.equals("films_users")) {
+				userModel = new UsersTableModel(null);
+				userTabla.setModel(userModel);
 			}
 		});
 		db_u.disconnectJDBC();
@@ -78,7 +93,7 @@ public class WindowAdmin extends JFrame{
 	}
 	
 	public void loadTree() {
-		for(int pos = 0;lAttributes.size()<pos;pos++) {
+		for(int pos = 0;lAttributes.size()>pos;pos++) {
 			DefaultMutableTreeNode newMTN = new DefaultMutableTreeNode(lAttributes.get(pos));
 			treeModel.insertNodeInto(newMTN, (MutableTreeNode) treeModel.getRoot(), pos);
 		}
