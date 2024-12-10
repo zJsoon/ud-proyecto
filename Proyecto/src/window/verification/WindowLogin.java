@@ -103,6 +103,7 @@ public class WindowLogin extends JFrame {
 		 */
 		loginBotton.addActionListener(e -> {
 			Users u = new Users(userText.getText(), passwordText.getText());
+			//boolean v = db_u.verificationUser(userText.getText(), passwordText.getText());
 			if(db_u.verificationUser(userText.getText(), passwordText.getText())){
 				System.out.println("Has iniciado sesión correctamente.");
 				JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente.");

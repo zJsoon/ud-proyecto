@@ -6,7 +6,7 @@ import window.logged.admin.WindowAdmin;
 
 public class Main {
 	public static void main(String[] args) {
-		//new WindowMain();
-		new WindowAdmin(null, new Users());
+		new WindowMain();
+		//new WindowAdmin(null, new Users());
 	}
 }

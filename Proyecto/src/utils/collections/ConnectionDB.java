@@ -12,7 +12,7 @@ import components.Users;
 
 public class ConnectionDB {
 	private Connection con;
-	private static boolean verified = false;
+	private static boolean verified;
 	private static boolean adminVerified = false;
 	private List<Users> lUsers;
 	private List<Users> lUsersAdmin;
@@ -58,18 +58,6 @@ public class ConnectionDB {
 		}
 	}
 	
-	public void crearAdmin() {
-		String sql = "INSERT INTO users VALUES (0, )";
-		try {
-			Statement stmt = con.createStatement();
-			stmt.executeUpdate(sql);
-			stmt.close();
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-	}
-	
 	/**
 	 * Verify if user is register
 	 * @param u_id			username of the JTextField
@@ -78,6 +66,7 @@ public class ConnectionDB {
 	 * @return verified 	true(if it is regiter & username&&passw is the same), false(not register || username||passw isnt same)
 	 */
 	public boolean verificationUser(String u_id, String passw) {
+		verified = false;
 		lUsers = obtainUsers();
 		for (Users u : lUsers) {
 			if(u.getUsername().equals(u_id) && u.getPass().equals(passw)) {
@@ -111,15 +100,16 @@ public class ConnectionDB {
 		
 		try {
 			Statement st = con.createStatement();
-			sql = "SELECT username, pass FROM users";
+			sql = "SELECT * FROM users";
 			ResultSet rs = st.executeQuery(sql);
-
 			while(rs.next()) {
 				//Obtenemos la información a la que hace referencia rs
 				String username = rs.getString("username");
 				String pass = rs.getString("pass");
+				String email = rs.getString("email");
+				boolean admin = rs.getBoolean("admin");
 				
-				Users a = new Users(username, pass);
+				Users a = new Users(username, pass, email, admin);
 				lUsers.add(a);
 			}
 			rs.close();

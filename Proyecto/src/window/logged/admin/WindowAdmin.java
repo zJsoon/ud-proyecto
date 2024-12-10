@@ -57,7 +57,7 @@ public class WindowAdmin extends JFrame{
 		
 		List<Users> lu = db_u.obtainUsers();
 		
-		userModel = new UsersTableModel(null);
+		userModel = new UsersTableModel(lu);
 		userTabla = new JTable(userModel);
 		userScroll = new JScrollPane(userTabla);
 	    
