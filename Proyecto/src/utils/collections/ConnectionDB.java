@@ -40,6 +40,7 @@ public class ConnectionDB {
 		if (con != null) {
 			try {
 				con.close();
+				System.out.println("Desconectado de la DB correctamente.");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
