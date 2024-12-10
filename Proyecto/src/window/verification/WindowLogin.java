@@ -88,7 +88,7 @@ public class WindowLogin extends JFrame {
 	    
 	    /* DB */
 	    ConnectionDB db_u = new ConnectionDB();
-	    db_u.connectJDBC("resources/db/db_proyecto.db");
+	    db_u.connectJDBC("db_proyecto.db");
 	    
 		/* EVENTS */
 	    /* BTN_EXIT

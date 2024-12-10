@@ -25,7 +25,7 @@ public class ConnectionDB {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			System.out.println("Se ha podido cargar el driver de la DB");
-			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			con = DriverManager.getConnection("jdbc:sqlite:resources/db/" + nombreBD);
 			System.out.println("Conectado a la db correctamente.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha podido cargar el driver de la DB");
@@ -86,8 +86,9 @@ public class ConnectionDB {
 		lUsers = new ArrayList<>();
 		
 		try {
+			System.out.println(con);
 			Statement st = con.createStatement();
-			sql = "SELECT * FROM users";
+			sql = "SELECT username, pass FROM users";
 			ResultSet rs = st.executeQuery(sql);
 
 			while(rs.next()) {
