@@ -1,5 +1,6 @@
 package window.logged.admin;
 
+import java.awt.BorderLayout;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class WindowAdmin extends JFrame{
 	
 	public WindowAdmin(JFrame wPrevious, Users u) {
 		super();
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.wPrevious = wPrevious;
 		wCurrent = this;
@@ -45,13 +47,17 @@ public class WindowAdmin extends JFrame{
 		
 		/* DB */
 		ConnectionDB db_u = new ConnectionDB();
-		db_u.connectJDBC("resources/db/db_project.db");
+		
+		db_u.connectJDBC("resources\\db\\db_project.db");
+		
 		List<Users> lu = db_u.obtainUsers();
 		
 		userModel = new UsersTableModel(null);
 		userTabla = new JTable(userModel);
 		userScroll = new JScrollPane(userTabla);
 	    
+		getContentPane().add(pWest, BorderLayout.WEST);
+		
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
 			String p = tp.getLastPathComponent().toString();

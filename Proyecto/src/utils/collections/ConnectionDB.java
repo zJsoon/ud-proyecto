@@ -25,7 +25,7 @@ public class ConnectionDB {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			System.out.println("Se ha podido cargar el driver de la DB");
-			con = DriverManager.getConnection("jdbc:sqlite:resources/db/" + nombreBD);
+			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 			System.out.println("Conectado a la db correctamente.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha podido cargar el driver de la DB");
@@ -43,6 +43,18 @@ public class ConnectionDB {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	public void crearTablas() {
+		String sql = "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, pass TEXT NOT NULL, pass_confirm TEXT NOT NULL, email TEXT NOT NULL, creationData TEXT DEFAULT (datetime('now')), modifiedData TEXT DEFAULT (datetime('now')), admin BOOLEAN NOT NULL);";
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
 	}
 	
@@ -86,7 +98,6 @@ public class ConnectionDB {
 		lUsers = new ArrayList<>();
 		
 		try {
-			System.out.println(con);
 			Statement st = con.createStatement();
 			sql = "SELECT username, pass FROM users";
 			ResultSet rs = st.executeQuery(sql);
