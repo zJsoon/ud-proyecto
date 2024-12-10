@@ -31,12 +31,17 @@ public class WindowAdmin extends JFrame{
 	
 	public WindowAdmin(JFrame wPrevious, Users u) {
 		super();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.wPrevious = wPrevious;
 		wCurrent = this;
 		
-		setBounds(300, 200, 600, 400);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("UD Students - Admin");
+		setBounds(200, 200, 600, 400);
+		setResizable(false);
+		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
+		setIconImage(imagen.getImage());
+		
 		pWest = new JPanel();
 		/*Creación del JTree*/
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("ADMIN PANEL");
@@ -57,6 +62,7 @@ public class WindowAdmin extends JFrame{
 		userScroll = new JScrollPane(userTabla);
 	    
 		getContentPane().add(pWest, BorderLayout.WEST);
+		getContentPane().add(userScroll, BorderLayout.CENTER);
 		
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
