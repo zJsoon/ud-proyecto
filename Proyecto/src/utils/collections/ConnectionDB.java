@@ -58,6 +58,18 @@ public class ConnectionDB {
 		}
 	}
 	
+	public void crearAdmin() {
+		String sql = "INSERT INTO users VALUES (0, )";
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Verify if user is register
 	 * @param u_id			username of the JTextField

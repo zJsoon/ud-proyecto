@@ -48,7 +48,7 @@ public class WindowAdmin extends JFrame{
 		/* DB */
 		ConnectionDB db_u = new ConnectionDB();
 		
-		db_u.connectJDBC("resources\\db\\db_project.db");
+		db_u.connectJDBC("resources\\db\\db_proyecto.db");
 		
 		List<Users> lu = db_u.obtainUsers();
 		
