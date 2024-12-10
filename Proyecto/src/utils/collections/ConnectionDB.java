@@ -77,6 +77,18 @@ public class ConnectionDB {
 		return verified;
 	}
 	
+	public Users userToVerify(String u_id, String passw) {
+		lUsers = obtainUsers();
+		Users us = null;
+		for (Users u : lUsers) {
+			if(u.getUsername().equals(u_id) && u.getPass().equals(passw)) {
+				us = u;
+				break;
+			}
+		}
+		return us;
+	}
+	
 	/**
 	 *  Verify if the user is admin
 	 * @param u_id				username of the user to verify if it is admin

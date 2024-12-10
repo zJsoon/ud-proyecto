@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import components.Users;
+import window.logged.admin.WindowAdmin;
 import window.logged.users.films.WindowFilms;
 import window.logged.users.series.WindowSeries;
 
@@ -12,15 +13,15 @@ public class WindowLogged extends JFrame{
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
-	private JPanel pCenter, pCenterLeft, pCenterRight, pNorth, pSouth, pEast, pWest;
+	private JPanel pCenter, pCenterLeft, pCenterMid, pCenterRight, pNorth, pSouth, pEast, pWest;
 	
-	private JButton btn_exit, btn_films, btn_series;
+	private JButton btn_exit, btn_films, btn_series, btn_admin;
 	
 	private JLabel lblNothText;
 	
 	public WindowLogged(JFrame wPrevious, Users u) {
 		super();
-		
+
 		wCurrent = this;
 		this.wPrevious = wPrevious;
 		
@@ -34,6 +35,7 @@ public class WindowLogged extends JFrame{
 		/* PANELS */
 		pCenter = new JPanel();
 		pCenterLeft = new JPanel();
+		pCenterMid = new JPanel();
 		pCenterRight = new JPanel();
 		pNorth = new JPanel();
 		pSouth = new JPanel();
@@ -44,6 +46,7 @@ public class WindowLogged extends JFrame{
 		btn_exit = new JButton("Exit");
 		btn_films = new JButton("Films");
 		btn_series = new JButton("Series");
+		btn_admin = new JButton("Admin");
 		
 		/* LABELS */
 		lblNothText = new JLabel("UD Students - Films/Series");
@@ -59,10 +62,17 @@ public class WindowLogged extends JFrame{
 		
 		/* AGREGAR ELEMENTOS A LOS PANELES */
 		pCenterLeft.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pCenterMid.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterRight.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterLeft.add(btn_films);
+		if(u.getAdmin() == true) {
+			pCenterMid.add(btn_admin);
+		}
 		pCenterRight.add(btn_series);
+		
+		
 		pCenter.add(pCenterLeft);
+		pCenter.add(pCenterMid);
 		pCenter.add(pCenterRight);
 		pNorth.add(lblNothText);
 		pSouth.add(btn_exit);
@@ -83,6 +93,15 @@ public class WindowLogged extends JFrame{
 		btn_films.addActionListener(e -> {
 			wCurrent.dispose();
 			new WindowFilms(wCurrent, u);
+		});
+		
+		/*
+		 * btn_admin
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de menú de admin
+		 */
+		btn_admin.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowAdmin(wCurrent, u);
 		});
 		
 		/*
