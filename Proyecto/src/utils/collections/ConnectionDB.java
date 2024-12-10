@@ -26,6 +26,7 @@ public class ConnectionDB {
 			Class.forName("org.sqlite.JDBC");
 			System.out.println("Se ha podido cargar el driver de la DB");
 			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			System.out.println("Conectado a la db correctamente.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha podido cargar el driver de la DB");
 		} catch (SQLException e) {
