@@ -34,4 +34,7 @@ public class ChatClient {
         }
     }
 }
+// The ChatClient class establishes	
+// a connection with the server and
+// creates two threads: one to listen
 
