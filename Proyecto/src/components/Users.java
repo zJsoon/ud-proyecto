@@ -81,6 +81,18 @@ public class Users {
 		this.admin = admin;
 	}
 	
+	/**	Create user for obteins admins
+	 * @param username	user name of the admin
+	 * @param pass	password of the admin
+	 * @param email	admin email
+	 */
+	public Users(String username, String pass, String email) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.email = email;
+	}
+	
 	/**	Create user for obteins users
 	 * @param username	user name of the user
 	 * @param pass	password of the user
