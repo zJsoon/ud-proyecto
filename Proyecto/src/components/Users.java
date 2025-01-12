@@ -81,6 +81,19 @@ public class Users {
 		this.admin = admin;
 	}
 	
+	/**	Create user for obteins users
+	 * @param username	user name of the user
+	 * @param pass	password of the user
+	 * @param email	email of the user
+	 * @param admin true or false
+	 */
+	public Users(String username, String pass, String email, boolean admin) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.email = email;
+		this.admin = admin;
+	}
 	
 	/** Get the user name 
 	 * @return String of the username gora 
