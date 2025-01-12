@@ -28,7 +28,6 @@ public class WindowAdmin extends JFrame{
 	private UsersTableModel userModel;
 	private AdminTableModel adminModel;
 	private JTable userTabla, adminTabla;
-	@SuppressWarnings("unused")
 	private JScrollPane userScroll, adminScroll;
 	
 	public WindowAdmin(JFrame wPrevious, Users u) {
@@ -64,24 +63,25 @@ public class WindowAdmin extends JFrame{
 		userModel = new UsersTableModel(null);
 		userTabla = new JTable(userModel);
 		userScroll = new JScrollPane(userTabla);
-	    
+		
 		adminModel = new AdminTableModel(null);
 		adminTabla = new JTable(adminModel);
 		adminScroll = new JScrollPane(adminTabla);
 		
 		getContentPane().add(pWest, BorderLayout.WEST);
-		//getContentPane().add(pCenter, BorderLayout.CENTER);
+		getContentPane().add(pCenter, BorderLayout.CENTER);
 		
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
 			String p = tp.getLastPathComponent().toString();
 			if(p.equals("user")) {
 				userModel = new UsersTableModel(lu);
-				userTabla.setModel(userModel);
+				userTabla.setModel(userModel);		
 				getContentPane().add(userScroll, BorderLayout.CENTER);
 			} else if (p.equals("admins")) {
 				adminModel = new AdminTableModel(la);
-				adminTabla.setModel(adminModel);
+				adminTabla.setModel(adminModel);	
+				getContentPane().add(adminScroll, BorderLayout.CENTER);
 			} else if (p.equals("series")) {
                 userModel = new UsersTableModel(null);
                 userTabla.setModel(userModel);
