@@ -70,7 +70,7 @@ public class WindowAdmin extends JFrame{
 		adminScroll = new JScrollPane(adminTabla);
 		
 		getContentPane().add(pWest, BorderLayout.WEST);
-		getContentPane().add(pCenter, BorderLayout.CENTER);
+		//getContentPane().add(pCenter, BorderLayout.CENTER);
 		
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
@@ -103,7 +103,6 @@ public class WindowAdmin extends JFrame{
 	
 	public void loadTree() {
 		for(int pos = 0;lAttributes.size()>pos;pos++) {
-			System.out.println(pos);
 			DefaultMutableTreeNode newMTN = new DefaultMutableTreeNode(lAttributes.get(pos));
 			treeModel.insertNodeInto(newMTN, (MutableTreeNode) treeModel.getRoot(), pos);
 		}
