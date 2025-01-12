@@ -10,7 +10,8 @@ import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 
 import components.Users;
-import utils.collections.ConnectionDB;
+import utils.collections.DB;
+import utils.tablemodel.AdminTableModel;
 import utils.tablemodel.UsersTableModel;
 
 public class WindowAdmin extends JFrame{
@@ -24,9 +25,10 @@ public class WindowAdmin extends JFrame{
 	private JScrollPane scrollTree;
 	
 	private UsersTableModel userModel;
-	private JTable userTabla;
+	private AdminTableModel adminModel;
+	private JTable userTabla, adminTabla;
 	@SuppressWarnings("unused")
-	private JScrollPane userScroll;
+	private JScrollPane userScroll, adminScroll;
 	
 	public WindowAdmin(JFrame wPrevious, Users u) {
 		super();
@@ -34,7 +36,13 @@ public class WindowAdmin extends JFrame{
 		this.wPrevious = wPrevious;
 		wCurrent = this;
 		
-		setBounds(300, 200, 600, 400);
+		setBounds(200, 200, 600, 400);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("US Students - Admin");
+		setResizable(false);
+		ImageIcon imagen = new ImageIcon("./img/logo-ud.png");
+		setIconImage(imagen.getImage());
+		
 		pWest = new JPanel();
 		/*Creación del JTree*/
 		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("ADMIN PANEL");
@@ -44,21 +52,41 @@ public class WindowAdmin extends JFrame{
 		pWest.add(scrollTree);
 		
 		/* DB */
-		ConnectionDB db_u = new ConnectionDB();
+		DB db_u = new DB();
 		db_u.connectJDBC("resources/db/db_project.db");
 		List<Users> lu = db_u.obtainUsers();
+		List<Users> la = db_u.obtainUsersAdmin();
 		
 		userModel = new UsersTableModel(null);
 		userTabla = new JTable(userModel);
 		userScroll = new JScrollPane(userTabla);
 	    
+		adminModel = new AdminTableModel(null);
+		adminTabla = new JTable(adminModel);
+		adminScroll = new JScrollPane(adminTabla);
+		
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
 			String p = tp.getLastPathComponent().toString();
 			if(p.equals("user")) {
 				userModel = new UsersTableModel(lu);
 				userTabla.setModel(userModel);
-			}
+			} else if (p.equals("admins")) {
+				adminModel = new AdminTableModel(la);
+				adminTabla.setModel(adminModel);
+			} else if (p.equals("series")) {
+                userModel = new UsersTableModel(null);
+                userTabla.setModel(userModel);
+            } else if (p.equals("films")) {
+                userModel = new UsersTableModel(null);
+                userTabla.setModel(userModel);
+            } else if (p.equals("series_users")) {
+                userModel = new UsersTableModel(null);
+                userTabla.setModel(userModel);
+            } else if (p.equals("films_users")) {
+                userModel = new UsersTableModel(null);
+                userTabla.setModel(userModel);
+            }
 		});
 		db_u.disconnectJDBC();
 		
