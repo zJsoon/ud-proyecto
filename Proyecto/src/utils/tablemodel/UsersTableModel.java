@@ -13,8 +13,8 @@ public class UsersTableModel extends DefaultTableModel{
 	private List<Users> lUsers;
 	private List<String> lTitles = Arrays.asList("Username", "Password", "Email", "Admin");
 	
-	public UsersTableModel(List<Users> lu) {
-		lUsers = lu;
+	public UsersTableModel(List<Users> lUsers) {
+		this.lUsers = lUsers;
 	}
 	
 	@Override
