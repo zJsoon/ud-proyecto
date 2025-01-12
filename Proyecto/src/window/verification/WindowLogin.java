@@ -88,8 +88,7 @@ public class WindowLogin extends JFrame {
 	    
 	    /* DB */
 	    ConnectionDB db_u = new ConnectionDB();
-	    db_u.connectJDBC("resources/db/db_project.sqbpro");
-	    
+	    db_u.connectJDBC("resources\\db\\db_proyecto.db");
 		/* EVENTS */
 	    /* BTN_EXIT
 		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
@@ -103,8 +102,8 @@ public class WindowLogin extends JFrame {
 		 * Boton que presionas, oculta la ventana actual y posteriormente comprueba que todos los campos esten correctos y en caso de que asi sea inicia sesión.
 		 */
 		loginBotton.addActionListener(e -> {
-			Users u = new Users(userText.getText(), passwordText.getText());
-			if(db_u.verificationUser(userText.getText(), passwordText.getText())){
+			Users u = db_u.userToVerify(userText.getText(), passwordText.getText());
+			if(u != null){
 				System.out.println("Has iniciado sesión correctamente.");
 				JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente.");
 				vaciarCampos(1);

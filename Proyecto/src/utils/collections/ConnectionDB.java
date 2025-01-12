@@ -12,7 +12,7 @@ import components.Users;
 
 public class ConnectionDB {
 	private Connection con;
-	private static boolean verified = false;
+	private static boolean verified;
 	private static boolean adminVerified = false;
 	private List<Users> lUsers;
 	private List<Users> lUsersAdmin;
@@ -24,8 +24,9 @@ public class ConnectionDB {
 		con = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			System.out.println("Se ha podido cargar el driver de la DB");
+			System.out.println("Se ha podido cargar driver de la DB");
 			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			System.out.println("Conectado a la db correctamente.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha podido cargar el driver de la DB");
 		} catch (SQLException e) {
@@ -39,9 +40,22 @@ public class ConnectionDB {
 		if (con != null) {
 			try {
 				con.close();
+				System.out.println("Desconectado de la DB correctamente.");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	public void crearTablas() {
+		String sql = "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, pass TEXT NOT NULL, pass_confirm TEXT NOT NULL, email TEXT NOT NULL, creationData TEXT DEFAULT (datetime('now')), modifiedData TEXT DEFAULT (datetime('now')), admin BOOLEAN NOT NULL);";
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+			stmt.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
 	}
 	
@@ -53,6 +67,7 @@ public class ConnectionDB {
 	 * @return verified 	true(if it is regiter & username&&passw is the same), false(not register || username||passw isnt same)
 	 */
 	public boolean verificationUser(String u_id, String passw) {
+		verified = false;
 		lUsers = obtainUsers();
 		for (Users u : lUsers) {
 			if(u.getUsername().equals(u_id) && u.getPass().equals(passw)) {
@@ -61,6 +76,18 @@ public class ConnectionDB {
 			}
 		}
 		return verified;
+	}
+	
+	public Users userToVerify(String u_id, String passw) {
+		lUsers = obtainUsers();
+		Users us = null;
+		for (Users u : lUsers) {
+			if(u.getUsername().equals(u_id) && u.getPass().equals(passw)) {
+				us = u;
+				break;
+			}
+		}
+		return us;
 	}
 	
 	/**
@@ -88,13 +115,14 @@ public class ConnectionDB {
 			Statement st = con.createStatement();
 			sql = "SELECT * FROM users";
 			ResultSet rs = st.executeQuery(sql);
-
 			while(rs.next()) {
 				//Obtenemos la información a la que hace referencia rs
 				String username = rs.getString("username");
 				String pass = rs.getString("pass");
+				String email = rs.getString("email");
+				boolean admin = rs.getBoolean("admin");
 				
-				Users a = new Users(username, pass);
+				Users a = new Users(username, pass, email, admin);
 				lUsers.add(a);
 			}
 			rs.close();
