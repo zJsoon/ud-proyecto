@@ -12,9 +12,9 @@ public class WindowLogged extends JFrame{
 	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
-	private JPanel pCenter, pCenterLeft, pCenterRight, pNorth, pSouth, pEast, pWest;
+	private JPanel pCenter, pCenterLeft, pCenterRight, pCenterMid, pNorth, pSouth, pEast, pWest;
 	
-	private JButton btn_exit, btn_films, btn_series;
+	private JButton btn_exit, btn_films, btn_series, btn_admin;
 	
 	private JLabel lblNothText;
 	
@@ -34,6 +34,7 @@ public class WindowLogged extends JFrame{
 		/* PANELS */
 		pCenter = new JPanel();
 		pCenterLeft = new JPanel();
+		pCenterMid = new JPanel();
 		pCenterRight = new JPanel();
 		pNorth = new JPanel();
 		pSouth = new JPanel();
@@ -43,6 +44,7 @@ public class WindowLogged extends JFrame{
 		/* BUTTONS */
 		btn_exit = new JButton("Exit");
 		btn_films = new JButton("Films");
+		btn_admin = new JButton("Admin");
 		btn_series = new JButton("Series");
 		
 		/* LABELS */
@@ -59,8 +61,12 @@ public class WindowLogged extends JFrame{
 		
 		/* AGREGAR ELEMENTOS A LOS PANELES */
 		pCenterLeft.setLayout(new FlowLayout(FlowLayout.CENTER));
+		pCenterMid.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterRight.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterLeft.add(btn_films);
+		if( u.getAdmin() == true ) {			
+			pCenterMid.add(btn_admin);
+		}
 		pCenterRight.add(btn_series);
 		pCenter.add(pCenterLeft);
 		pCenter.add(pCenterRight);

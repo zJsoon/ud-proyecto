@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import components.Users;
-import utils.collections.ConnectionDB;
+import utils.collections.DB;
 import window.logged.admin.WindowAdmin;
 import window.logged.users.WindowLogged;
 
@@ -87,7 +87,7 @@ public class WindowLogin extends JFrame {
 	    panel.add(lblResetPassword);
 	    
 	    /* DB */
-	    ConnectionDB db_u = new ConnectionDB();
+	    DB db_u = new DB();
 	    db_u.connectJDBC("resources\\db\\db_proyecto.db");
 		/* EVENTS */
 	    /* BTN_EXIT
