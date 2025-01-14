@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import components.Users;
 import utils.collections.DB;
+import window.WindowMain;
 import window.logged.admin.WindowAdmin;
 import window.logged.users.WindowLogged;
 
@@ -95,14 +96,15 @@ public class WindowLogin extends JFrame {
 		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
 		 */
 	    exitBotton.addActionListener(e -> {
-			wCurrent.dispose();
-			wPrevious.setVisible(true);
+			wCurrent.disable();
+			new WindowMain();
 		});
 	    
 	    /* loginBotton
 		 * Boton que presionas, oculta la ventana actual y posteriormente comprueba que todos los campos esten correctos y en caso de que asi sea inicia sesión.
 		 */
 		loginBotton.addActionListener(e -> {
+			db_u.connectJDBC("resources\\db\\db_proyecto.db");
 			Users u = db_u.userToVerify(userText.getText(), passwordText.getText());
 			if(u != null){
 				System.out.println("Has iniciado sesión correctamente.");
@@ -110,11 +112,11 @@ public class WindowLogin extends JFrame {
 				vaciarCampos(1);
 				wCurrent.dispose(); // Cierro ventana actual
 				new WindowLogged(wCurrent, u); // Abrimos la ventana2 indicando que su ventana anterior es (this).
-				db_u.disconnectJDBC();
 			} else{
 				JOptionPane.showMessageDialog(null, "Inicio de sesión incorrecto pruebelo de nuevo.");
 				vaciarCampos(1);
 			}
+			db_u.disconnectJDBC();
 		});
 		/* lblResetPassword
 		 * Texto a presionar que en caso de hacerlo oculta la ventana actual y posteriormente crea una ventana donde podras cambiar la contraseña.
@@ -123,6 +125,7 @@ public class WindowLogin extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				wCurrent.dispose();
 				new WindowResetPassword(wCurrent);
+				db_u.disconnectJDBC();
 			}
 		});
 		/* THREAD CREATE

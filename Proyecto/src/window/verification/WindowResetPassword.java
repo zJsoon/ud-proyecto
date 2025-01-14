@@ -1,11 +1,8 @@
 package window.verification;
 
 import java.awt.*;
-import java.io.*;
-import java.time.*;
 import javax.swing.*;
-
-import components.Users;
+import utils.collections.DB;
 
 public class WindowResetPassword extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -72,6 +69,10 @@ public class WindowResetPassword extends JFrame{
 		pSouth.add(btn_back);
 		pSouth.add(btn_submit);
 		
+		/* DB */
+	    DB db_u = new DB();
+	   
+		
 		/* EVENTS */
 		/* BTN_BACK
 		 * Boton que presionas, oculta la ventana actual y posteriormente activa la ventana anterior.
@@ -85,49 +86,26 @@ public class WindowResetPassword extends JFrame{
 		 * Boton que presionas, mira si existe el usuario y en ese caso cambia los datos que haya en el fichero.
 		 */
 		btn_submit.addActionListener(e -> {
-			Boolean find = false;
-			
-			String user = txtUsername.getText();
-			String password = txtPassRecover.getText();
-			Users u = new Users(user, password);
-			
-			String linea;
-			String fich = "./src/data/db-users.txt";
-			String [] sp = null;
-			
-			try {
-				BufferedReader br = new BufferedReader(new FileReader(fich));
-				
-				while(!find && (linea=br.readLine())!=null) {
-					sp = linea.split(";");
-					if(u.getUsername().equals(sp[0])) {
-						find = true;
-					}
-				}
-				if(find) {
-					sp[1] = password;
-					sp[2] = password;
-					sp[5] = LocalDateTime.now().toString();
-					
-					JOptionPane.showMessageDialog(null, "You have successfully change your password.", "SUCCESSFUL!", JOptionPane.INFORMATION_MESSAGE);
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "Not registered.", "ERROR.", JOptionPane.ERROR_MESSAGE);
-				}
-				
+			 db_u.connectJDBC("resources\\db\\db_proyecto.db");
+			boolean edit = db_u.editUserPassword(txtUsername.getText(), txtPassRecover.getText());
+			if(edit) {
+		    	System.out.println("Se ha editado la contraseña correctamente correctamente.");
+				JOptionPane.showMessageDialog(null, "Has cambiado la contraseña correctamente.");
 				wCurrent.dispose();
 				new WindowLogin(wCurrent);
-
-				br.close();
-			} catch (FileNotFoundException err) {
-				err.printStackTrace();
-			} catch (IOException err) {
-				err.printStackTrace();
-			}
-			
+			} else{
+	    		JOptionPane.showMessageDialog(null, "Confirme que el usuario es el mismo al que ha insertado.");
+	    		vaciarCampos();
+	    		System.out.println("No se ha podido editar la contraseña.");
+	    	}
+			db_u.disconnectJDBC();
 		});
 		
 		/* VISIBILIDAD */
 		setVisible(true);
+	}
+	public void vaciarCampos () {
+		txtUsername.setText("");
+		txtPassRecover.setText("");
 	}
 }

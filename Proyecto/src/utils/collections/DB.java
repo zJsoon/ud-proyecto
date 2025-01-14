@@ -159,12 +159,73 @@ public class DB {
 		return lUsersAdmin;
 	}
 	
-	public void registerUsers(String username, String pass, String pass_confirm, String email) {
-		String sql = "INSERT INTO users ('username', 'pass', 'pass_confirm', 'email', 'admin') VALUES ('" + username + "', '" + pass + "', '" + pass_confirm + "', '" + email + "', FALSE)";
-		try(PreparedStatement ps = con.prepareStatement(sql);) {
-			ps.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
+	public Boolean registerUsers(String username, String pass, String pass_confirm, String email) {
+		Boolean register = true;
+		try {
+			String checkUsernameSql = "SELECT COUNT(*) FROM users WHERE username = ?";
+	        PreparedStatement checkUsernameStmt = con.prepareStatement(checkUsernameSql);
+	        checkUsernameStmt.setString(1, username);
+	        ResultSet rs = checkUsernameStmt.executeQuery();
+	        if (rs.next() && rs.getInt(1) > 0) {
+	            System.out.println("El nombre de usuario ya existe.");
+	            register = false;
+	        }
+	        
+	        String checkEmailSql = "SELECT COUNT(*) FROM users WHERE email = ?";
+            PreparedStatement checkEmailStmt = con.prepareStatement(checkEmailSql);
+            checkEmailStmt.setString(1, email);
+            rs = checkEmailStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                System.out.println("El correo electrónico ya está registrado.");
+                register = false;
+            }
+	        
+	        if (register) {
+	        	String sql = "INSERT INTO users ('username', 'pass', 'pass_confirm', 'email', 'admin') VALUES ('" + username + "', '" + pass + "', '" + pass_confirm + "', '" + email + "', FALSE)";
+				try(PreparedStatement ps = con.prepareStatement(sql);) {
+					ps.execute();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	        }
+	        checkUsernameStmt.close();
+	        checkEmailStmt.close();
+		}catch (SQLException e) {
+            e.printStackTrace();
 		}
+		return register;
+	}
+	
+	public Boolean editUserPassword(String username, String pass) {
+		Boolean edit = true;
+		try {
+			String checkUserSql = "SELECT COUNT(*) FROM users WHERE username = ?";
+            PreparedStatement checkUserStmt = con.prepareStatement(checkUserSql);
+            checkUserStmt.setString(1, username);
+            ResultSet rs = checkUserStmt.executeQuery();
+            if (!rs.next() || rs.getInt(1) == 0) {
+                System.out.println("El usuario no existe.");
+                edit = false;
+            }
+            
+            if(edit) {
+            	String sql = "UPDATE users SET pass = '" + pass + "' WHERE username = '" + username + "'";
+            	String sql2 = "UPDATE users SET pass_confirm = '" + pass + "' WHERE username = '" + username + "'";
+    			try(PreparedStatement ps = con.prepareStatement(sql);PreparedStatement ps2 = con.prepareStatement(sql2);) {
+    				ps.execute();
+    				ps2.execute();
+    			} catch (SQLException e) {
+    				e.printStackTrace();
+    			}
+            }
+            rs.close();
+            checkUserStmt.close();
+		} catch (SQLException e) {
+            e.printStackTrace();
+            edit = false;
+        }
+		
+		return edit;
+		
 	}
 }

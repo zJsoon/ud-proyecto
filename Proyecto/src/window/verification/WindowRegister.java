@@ -126,6 +126,7 @@ public class WindowRegister extends JFrame{
 					vaciarCampos(3);
 					wCurrent.dispose();
 					new WindowLogin(wCurrent); 
+					db_u.disconnectJDBC();
 	    		}else {
 	    			System.out.println("No se ha podido registrar, ya existia un usuario con mismo username o email.");
 					JOptionPane.showMessageDialog(null, "No se ha podido registrar correctamente, nombre de usuario o email registrados.");
