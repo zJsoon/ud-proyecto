@@ -7,7 +7,6 @@ import java.util.*;
 import javax.swing.*;
 
 import components.Films;
-import components.Series;
 import components.Users;
 import utils.collections.CinemaCollections;
 
@@ -15,6 +14,7 @@ import utils.collections.CinemaCollections;
 public class WindowAddFilmsUser extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
 	private JFrame wCurrent, wPrevious;
 	
 	private JPanel pCenter, pSouth, pNorth;
