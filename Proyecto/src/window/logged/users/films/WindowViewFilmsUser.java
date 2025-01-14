@@ -54,7 +54,7 @@ public class WindowViewFilmsUser extends JFrame {
 		btnClose = new JButton("CLOSE");
 		pSouth.add(btnClose);
 
-		//loadFotosDatabaseUser("./src/data/db-users-films.txt", u);
+		loadFotosDatabaseUser("./src/data/db-users-films.txt", u);
 
 		/* THREAD CREATION */
 		Runnable r = new Runnable() {
@@ -96,7 +96,7 @@ public class WindowViewFilmsUser extends JFrame {
 	 * @param nomfich File name
 	 */
 	public void loadFotosDatabaseUser(String nomfich, Users u) {
-		CinemaCollections.loadSeriesUsers(nomfich, u);
+		CinemaCollections.loadFilmsUsers(nomfich, u);
 		for (Films p : CinemaCollections.getaFilms()) {
 			JLabel lblFoto = new JLabel();
 			lblFoto.setSize(150, 200);

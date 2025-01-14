@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.table.JTableHeader;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
@@ -61,7 +62,7 @@ public class WindowAdmin extends JFrame{
 		/* DB */
 		DB db_u = new DB();
 		db_u.connectJDBC("resources\\db\\db_proyecto.db");
-		//System.out.println(lAttributes.size());
+		
 		List<Users> lu = db_u.obtainUsers();
 		List<Users> la = db_u.obtainUsersAdmin();
 		
@@ -73,37 +74,66 @@ public class WindowAdmin extends JFrame{
 		adminTabla = new JTable(adminModel);
 		adminScroll = new JScrollPane(adminTabla);
 		
-		serieModel = new SeriesTableModel(null);
+		
+		CinemaCollections.loadFilms("src\\data\\db-films.txt");
+		CinemaCollections.loadSeries("src\\data\\db-series.txt");
+		
+		serieModel = new SeriesTableModel(CinemaCollections.getaSeries());
 		serieTabla = new JTable(serieModel);
 		serieScroll = new JScrollPane(serieTabla);
 		
-		filmsModel = new FilmsTableModel(null);
+		filmsModel = new FilmsTableModel(CinemaCollections.getaFilms());
 		filmsTabla = new JTable(filmsModel);
 		filmsScroll = new JScrollPane(filmsTabla);
 		
 		getContentPane().add(pWest, BorderLayout.WEST);
 		getContentPane().add(pCenter, BorderLayout.CENTER);
 		
+		pCenter.add(adminScroll);
+		pCenter.add(userScroll);
+		pCenter.add(serieScroll);
+		pCenter.add(filmsScroll);
+	    
+	    JTableHeader header = userTabla.getTableHeader();
+        header.setReorderingAllowed(false);
+        
+        JTableHeader header2 = adminTabla.getTableHeader();
+        header2.setReorderingAllowed(false);
+        
+        JTableHeader header3 = serieTabla.getTableHeader();
+        header3.setReorderingAllowed(false);
+        
+        JTableHeader header4 = filmsTabla.getTableHeader();
+        header4.setReorderingAllowed(false);
+	    
 		tree.addTreeSelectionListener( e -> {
 			TreePath tp = e.getPath();
 			String p = tp.getLastPathComponent().toString();
-			if(p.equals("user")) {
+			if (p.equals("user")) {
 				userModel = new UsersTableModel(lu);
-				userTabla.setModel(userModel);		
-				getContentPane().add(userScroll, BorderLayout.CENTER);
-			} else if (p.equals("admins")) {
-				adminModel = new AdminTableModel(la);
-				adminTabla.setModel(adminModel);	
-				getContentPane().add(adminScroll, BorderLayout.CENTER);
-			} else if (p.equals("series")) {
-				serieModel = new SeriesTableModel(CinemaCollections.getaSeries());
-				serieTabla.setModel(serieModel);
-				getContentPane().add(serieScroll, BorderLayout.CENTER);
-            } else if (p.equals("films")) {
-                filmsModel = new FilmsTableModel(CinemaCollections.getaFilms());
-                filmsTabla.setModel(filmsModel);
-                getContentPane().add(filmsScroll, BorderLayout.CENTER);
-            }
+				userTabla.setModel(userModel);
+		        userScroll.setVisible(true);
+		        adminScroll.setVisible(false);
+		        serieScroll.setVisible(false);
+		        filmsScroll.setVisible(false);
+		    } else if (p.equals("admins")) {
+		    	adminModel = new AdminTableModel(la);
+				adminTabla.setModel(adminModel);
+		        userScroll.setVisible(false);
+		        adminScroll.setVisible(true);
+		        serieScroll.setVisible(false);
+		        filmsScroll.setVisible(false);
+		    } else if (p.equals("series")) {
+		        userScroll.setVisible(false);
+		        adminScroll.setVisible(false);
+		        serieScroll.setVisible(true);
+		        filmsScroll.setVisible(false);
+		    } else if (p.equals("films")) {
+		        userScroll.setVisible(false);
+		        adminScroll.setVisible(false);
+		        serieScroll.setVisible(false);
+		        filmsScroll.setVisible(true);
+		    }
 		});
 		db_u.disconnectJDBC();
 		

@@ -187,7 +187,7 @@ public class CinemaCollections {
 				System.out.println(linea);
 				String[] partes = linea.split("\t");
 				if (partes[0].equals(u.getUsername())) {
-					Films p = new Films(partes[1], partes[2], Integer.parseInt(partes[3]), Integer.parseInt(partes[4]), partes[5], Boolean.parseBoolean(partes[6]), Integer.parseInt(partes[7]));
+					Films p = new Films(partes[1], partes[2], Integer.parseInt(partes[3]), Integer.parseInt(partes[4]), Integer.parseInt(partes[5]));
 					aFilms.add(p);
 				}
 			}

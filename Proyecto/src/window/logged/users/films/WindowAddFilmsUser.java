@@ -58,7 +58,7 @@ public class WindowAddFilmsUser extends JFrame{
 		btnClose = new JButton("CLOSE");
 		pSouth.add(btnClose);
 		
-		loadFotos("data/db-films.txt");
+		loadFotos("src/data/db-films.txt");
 		
 		/*CREATE THREAD*/
 		Runnable r = new Runnable() {
@@ -90,7 +90,7 @@ public class WindowAddFilmsUser extends JFrame{
 		});
 		
 		/*MOUSE CLICKER SELECT IMG*/
-		/* CODIGO FUNCIONAL, TENEMOS QUE ADAPTAR PARA QUE PASEN PARAMETROS DE USUARIO.
+		//CODIGO FUNCIONAL, TENEMOS QUE ADAPTAR PARA QUE PASEN PARAMETROS DE USUARIO.
 		pCenter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -100,8 +100,8 @@ public class WindowAddFilmsUser extends JFrame{
 				ImageIcon im = (ImageIcon) lblFoto.getIcon();
 				Films films = CinemaCollections.getFilms(im.getDescription());
 				try {
-					PrintWriter pw = new PrintWriter(new FileWriter("data/db-users-films.txt", true));
-					Scanner sc = new Scanner(new File("data/db-users-films.txt"));
+					PrintWriter pw = new PrintWriter(new FileWriter("src/data/db-users-films.txt", true));
+					Scanner sc = new Scanner(new File("src/data/db-users-films.txt"));
 					while(sc.hasNextLine()) {
 						String linea = sc.nextLine();
 						String [] partes = linea.split("\t");
@@ -109,7 +109,7 @@ public class WindowAddFilmsUser extends JFrame{
 							JOptionPane.showMessageDialog(null, "The serie already added.", "Action blocked", JOptionPane.ERROR_MESSAGE);
 							break;
 						}else {							
-							pw.println(u.getUsername() + films.getImgCover() + "\t" + films.getTitle() + "\t" + films.getYr() + "\t" + films.getRating() +  "\t" + films.getDuration()););
+							pw.println(u.getUsername() + "\t" + films.getImgCover() + "\t" + films.getTitle() + "\t" + films.getYr() + "\t" + films.getRating() +  "\t" + films.getDuration());
 							break;
 						}
 					}
@@ -122,7 +122,7 @@ public class WindowAddFilmsUser extends JFrame{
 				}
 				dispose(); 
 			}
-		});*/
+		});
 		
 		/*VISIBILITY*/
 		setVisible(true);
@@ -133,7 +133,7 @@ public class WindowAddFilmsUser extends JFrame{
 	 */
 	public void loadFotos(String nomfich) {
 		CinemaCollections.clear();
-		CinemaCollections.loadSeries(nomfich);
+		CinemaCollections.loadFilms(nomfich);
 		for(Films p: CinemaCollections.getaFilms()) {
 			JLabel lblFoto = new JLabel();
 			lblFoto.setSize(150,200);

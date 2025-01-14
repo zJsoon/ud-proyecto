@@ -106,6 +106,11 @@ private static final long serialVersionUID = 1L;
 			wCurrent.dispose();
 			new WindowAddFilmsUser(wCurrent, u);
 		});
+		
+		btnEditFilms.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowFilmsEdit(wCurrent, u);
+		});
 		/*THREAD CREATION*/
 		Runnable r = new Runnable() {
 		    @Override
