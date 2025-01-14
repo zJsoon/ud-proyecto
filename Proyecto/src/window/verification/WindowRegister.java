@@ -1,9 +1,7 @@
 package window.verification;
 import java.awt.*;
 import javax.swing.*;
-
 import utils.collections.DB;
-import window.logged.users.WindowLogged;
 
 public class WindowRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -22,6 +20,7 @@ public class WindowRegister extends JFrame{
 	private JTextField userText, emailText;
 	private JPasswordField passwordText, passwordConfirmationText;
 	
+	@SuppressWarnings("deprecation")
 	public WindowRegister(JFrame wPrevious) {
 
 		super();
@@ -120,15 +119,23 @@ public class WindowRegister extends JFrame{
 	    
 	    registerBotton.addActionListener(e ->{
 	    	if(passwordText.getText().equals(passwordConfirmationText.getText())) {
-	    		db_u.registerUsers(userText.getText(), passwordText.getText(), passwordConfirmationText.getText(), emailText.getText());
-	    		System.out.println("Te has registrado correctamente.");
-				JOptionPane.showMessageDialog(null, "Has sido registrado correctamente correctamente.");
-				wCurrent.dispose();
-				new WindowLogin(wCurrent); 
+	    		boolean register =  db_u.registerUsers(userText.getText(), passwordText.getText(), passwordConfirmationText.getText(), emailText.getText());
+	    		if(register) {
+	    			System.out.println("Te has registrado correctamente.");
+					JOptionPane.showMessageDialog(null, "Has sido registrado correctamente.");
+					vaciarCampos(3);
+					wCurrent.dispose();
+					new WindowLogin(wCurrent); 
+	    		}else {
+	    			System.out.println("No se ha podido registrar, ya existia un usuario con mismo username o email.");
+					JOptionPane.showMessageDialog(null, "No se ha podido registrar correctamente, nombre de usuario o email registrados.");
+					vaciarCampos(2);
+	    		}
+	    		
 	    	}
 	    	else{
 	    		JOptionPane.showMessageDialog(null, "Confirmación de contraseña incorrecto pruebelo de nuevo.");
-	    		vaciarCampos();
+	    		vaciarCampos(1);
 	    		System.out.println("Las contraseñas no coinciden.");
 	    	}
 	    });
@@ -158,8 +165,18 @@ public class WindowRegister extends JFrame{
 		t.start();
 		setVisible(true);
 	}
-	public void vaciarCampos () {
-		passwordText.setText("");
-		passwordConfirmationText.setText("");
+	public void vaciarCampos (int i) {
+		if (i == 1) {
+			passwordText.setText("");
+			passwordConfirmationText.setText("");
+		}else if (i == 2) {
+			userText.setText("");
+			emailText.setText("");
+		}else if(i == 3) {
+			userText.setText("");
+			passwordText.setText("");
+			passwordConfirmationText.setText("");
+			emailText.setText("");
+		}
 	}
 }
