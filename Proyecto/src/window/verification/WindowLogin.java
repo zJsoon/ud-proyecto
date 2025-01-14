@@ -89,6 +89,7 @@ public class WindowLogin extends JFrame {
 	    /* DB */
 	    DB db_u = new DB();
 	    db_u.connectJDBC("resources\\db\\db_proyecto.db");
+	    
 		/* EVENTS */
 	    /* BTN_EXIT
 		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
