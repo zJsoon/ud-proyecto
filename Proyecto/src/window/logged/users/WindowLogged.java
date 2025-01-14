@@ -14,7 +14,7 @@ public class WindowLogged extends JFrame{
 	
 	private JPanel pCenter, pCenterLeft, pCenterRight, pCenterMid, pNorth, pSouth, pEast, pWest;
 	
-	private JButton btn_exit, btn_films, btn_series, btn_admin;
+	private JButton btn_exit, btn_films, btn_series, btn_admin, btn_Chat;
 	
 	private JLabel lblNothText;
 	
@@ -46,6 +46,7 @@ public class WindowLogged extends JFrame{
 		btn_films = new JButton("Films");
 		btn_admin = new JButton("Admin");
 		btn_series = new JButton("Series");
+		btn_Chat = new JButton("Chat");
 		
 		/* LABELS */
 		lblNothText = new JLabel("UD Students - Films/Series");
@@ -68,6 +69,7 @@ public class WindowLogged extends JFrame{
 			pCenterMid.add(btn_admin);
 		}
 		pCenterRight.add(btn_series);
+		pCenterRight.add(btn_Chat);
 		pCenter.add(pCenterLeft);
 		pCenter.add(pCenterRight);
 		pNorth.add(lblNothText);
