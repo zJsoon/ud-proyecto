@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import components.Films;
@@ -13,22 +14,22 @@ import components.Users;
 
 public class CinemaCollections {
 	/*SERIES ATTRIBUTES*/
-	private static ArrayList<Series> aSeries = new ArrayList<>();
+	private static List<Series> aSeries = new ArrayList<>();
 	
 	/** Gets the array list of all series
 	 * @return ArrayList
 	 */
-	public static ArrayList<Series> getaSeries() {
+	public static List<Series> getaSeries() {
 		return aSeries;
 	}
 	
 	/*FILMS ATTRIBUTES*/
-	private static ArrayList<Films> aFilms = new ArrayList<>();
+	private static List<Films> aFilms = new ArrayList<>();
 	
 	/** Gets the array list of all movies
 	 * @return ArrayList
 	 */
-	public static ArrayList<Films> getaFilms() {
+	public static List<Films> getaFilms() {
 		return aFilms;
 	}
 
