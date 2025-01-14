@@ -2,6 +2,7 @@ package utils.collections;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -131,7 +132,7 @@ public class DB {
 		}
 		return lUsers;
 	}
-	
+		
 	public List<Users> obtainUsersAdmin(){
 		String sql;
 		lUsersAdmin = new ArrayList<>();
@@ -156,5 +157,14 @@ public class DB {
 			e.printStackTrace();
 		}
 		return lUsersAdmin;
+	}
+	
+	public void registerUsers(String username, String pass, String pass_confirm, String email) {
+		String sql = "INSERT INTO users ('username', 'pass', 'pass_confirm', 'email', 'admin') VALUES ('" + username + "', '" + pass + "', '" + pass_confirm + "', '" + email + "', FALSE)";
+		try(PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
