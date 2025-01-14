@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import components.Users;
+import window.logged.admin.WindowAdmin;
 import window.logged.users.films.WindowFilms;
 import window.logged.users.series.WindowSeries;
 
@@ -64,11 +65,12 @@ public class WindowLogged extends JFrame{
 		pCenterMid.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterRight.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterLeft.add(btn_films);
-		if( u.getAdmin() == true ) {			
+		if(u.getAdmin()) {			
 			pCenterMid.add(btn_admin);
 		}
 		pCenterRight.add(btn_series);
 		pCenter.add(pCenterLeft);
+		pCenter.add(pCenterMid);
 		pCenter.add(pCenterRight);
 		pNorth.add(lblNothText);
 		pSouth.add(btn_exit);
@@ -98,6 +100,16 @@ public class WindowLogged extends JFrame{
 		btn_series.addActionListener(e -> {
 			wCurrent.dispose();
 			new WindowSeries(wCurrent, u);
+		});
+		
+		/*
+		 * btn_admin
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de series
+		 */
+		
+		btn_admin.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowAdmin(wCurrent, u);
 		});
 		
 		/* THREAD CREATE
