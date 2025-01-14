@@ -10,7 +10,7 @@ import java.util.List;
 
 import components.Users;
 
-public class ConnectionDB {
+public class DB {
 	private Connection con;
 	private static boolean verified;
 	private static boolean adminVerified = false;
@@ -24,7 +24,7 @@ public class ConnectionDB {
 		con = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			System.out.println("Se ha podido cargar el driver de la DB");
+			System.out.println("Se ha podido cargar driver de la DB");
 			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 			System.out.println("Conectado a la db correctamente.");
 		} catch (ClassNotFoundException e) {
@@ -54,7 +54,6 @@ public class ConnectionDB {
 			stmt.executeUpdate(sql);
 			stmt.close();
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 	}
@@ -145,8 +144,10 @@ public class ConnectionDB {
 			while(rs.next()) {
 				//Obtenemos la información a la que hace referencia rs
 				String username = rs.getString("username");
+				String pass = rs.getString("pass");
+				String email = rs.getString("email");
 				
-				Users a = new Users(username);
+				Users a = new Users(username, pass, email);
 				lUsersAdmin.add(a);
 			}
 			rs.close();

@@ -51,20 +51,6 @@ public class Users {
 		this.modifiedData = LocalDateTime.now();
 	}
 	
-	/**	Create user info for the admins
-	 * @param username	user name of the user
-	 * @param pass	password of the user
-	 * @param email	email of the user
-	 * @param admin	admin (true o false)
-	 */
-	public Users(String username, String pass, String email, boolean admin) {
-		super();
-		this.username = username;
-		this.pass = pass;
-		this.email = email;
-		this.admin = admin;
-	}
-	
 	/**	Create user for verification login
 	 * @param username	user name of the user
 	 * @param pass	password of the user
@@ -95,6 +81,31 @@ public class Users {
 		this.admin = admin;
 	}
 	
+	/**	Create user for obteins admins
+	 * @param username	user name of the admin
+	 * @param pass	password of the admin
+	 * @param email	admin email
+	 */
+	public Users(String username, String pass, String email) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.email = email;
+	}
+	
+	/**	Create user for obteins users
+	 * @param username	user name of the user
+	 * @param pass	password of the user
+	 * @param email	email of the user
+	 * @param admin true or false
+	 */
+	public Users(String username, String pass, String email, boolean admin) {
+		super();
+		this.username = username;
+		this.pass = pass;
+		this.email = email;
+		this.admin = admin;
+	}
 	
 	/** Get the user name 
 	 * @return String of the username gora 
