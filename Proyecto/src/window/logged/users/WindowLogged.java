@@ -3,8 +3,8 @@ package window.logged.users;
 import java.awt.*;
 import javax.swing.*;
 
-import chat.WindowChat;
 import components.Users;
+import window.logged.admin.WindowAdmin;
 import window.logged.users.films.WindowFilms;
 import window.logged.users.series.WindowSeries;
 
@@ -15,7 +15,7 @@ public class WindowLogged extends JFrame{
 	
 	private JPanel pCenter, pCenterLeft, pCenterRight, pCenterMid, pNorth, pSouth, pEast, pWest;
 	
-	private JButton btn_exit, btn_films, btn_series, btn_admin, btn_Chat;
+	private JButton btn_exit, btn_films, btn_series, btn_admin;
 	
 	private JLabel lblNothText;
 	
@@ -47,7 +47,6 @@ public class WindowLogged extends JFrame{
 		btn_films = new JButton("Films");
 		btn_admin = new JButton("Admin");
 		btn_series = new JButton("Series");
-		btn_Chat = new JButton("Chat");
 		
 		/* LABELS */
 		lblNothText = new JLabel("UD Students - Films/Series");
@@ -66,12 +65,12 @@ public class WindowLogged extends JFrame{
 		pCenterMid.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterRight.setLayout(new FlowLayout(FlowLayout.CENTER));
 		pCenterLeft.add(btn_films);
-		if( u.getAdmin() == true ) {			
+		if(u.getAdmin()) {			
 			pCenterMid.add(btn_admin);
 		}
 		pCenterRight.add(btn_series);
-		pCenterRight.add(btn_Chat);
 		pCenter.add(pCenterLeft);
+		pCenter.add(pCenterMid);
 		pCenter.add(pCenterRight);
 		pNorth.add(lblNothText);
 		pSouth.add(btn_exit);
@@ -104,11 +103,13 @@ public class WindowLogged extends JFrame{
 		});
 		
 		/*
-		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de chat
+		 * btn_admin
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de series
 		 */
-		btn_Chat.addActionListener(e -> {
+		
+		btn_admin.addActionListener(e -> {
 			wCurrent.dispose();
-			new WindowChat(wCurrent, u);
+			new WindowAdmin(wCurrent, u);
 		});
 		
 		/* THREAD CREATE
