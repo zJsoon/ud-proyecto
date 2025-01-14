@@ -1,2 +1,3 @@
 user;password;password_confirm;email;creationData;modifiedData;admin;
 agc;123;123;email;2024-10-06T13:12:00.522755700;2024-10-06T13:12:00.522755700;true
+user1;pass1,email1,2024-10-06T13:12:00.522755700,2024-10-06T13:12:00.522755700,false

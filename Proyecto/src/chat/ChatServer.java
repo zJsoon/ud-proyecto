@@ -20,6 +20,12 @@ package chat;
 	            e.printStackTrace();
 	        }
 	    }
+	    
+// The ChatServer class listens for
+// incoming connections and creates a
+// new ClientHandler thread for each
+	    
+	   
 
 	    private static class ClientHandler implements Runnable {
 	        private Socket socket;
