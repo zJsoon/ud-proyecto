@@ -2,6 +2,9 @@ package window.verification;
 import java.awt.*;
 import javax.swing.*;
 
+import utils.collections.DB;
+import window.logged.users.WindowLogged;
+
 public class WindowRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
@@ -16,7 +19,8 @@ public class WindowRegister extends JFrame{
 	
 	private JLabel lblNorthText, userLabel, emailLabel, passwordLabel, passwordComfirmationLabel;
 	
-	private JTextField userText, emailText, passwordText, passwordConfirmationText;
+	private JTextField userText, emailText;
+	private JPasswordField passwordText, passwordConfirmationText;
 	
 	public WindowRegister(JFrame wPrevious) {
 
@@ -60,8 +64,8 @@ public class WindowRegister extends JFrame{
 		/* TEXT FIELD */
 		userText = new JTextField();
 		emailText = new JTextField();
-		passwordText = new JTextField();
-		passwordConfirmationText = new JTextField();
+		passwordText = new JPasswordField();
+		passwordConfirmationText = new JPasswordField();
 		
 		/* LABELS */
 		userLabel = new JLabel("Username");
@@ -77,6 +81,7 @@ public class WindowRegister extends JFrame{
 	    passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	    passwordComfirmationLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNorthText.setForeground(Color.CYAN);
+		lblNorthText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
 		
 		/* DEFINIR PANELES PRINCIPALES */
 	    getContentPane().add(panelCenter, BorderLayout.CENTER);
@@ -99,6 +104,11 @@ public class WindowRegister extends JFrame{
 	    panelSouth.add(exitBotton);
 	    pNorth.add(lblNorthText);
 	    
+	    
+	    /* DB */
+	    DB db_u = new DB();
+	    db_u.connectJDBC("resources\\db\\db_proyecto.db");
+	    
 		/* EVENTS */
 	    /* BTN_EXIT
 		 * Boton que presionas, oculta la ventana actual y posteriormente enseña la ventana anterior.
@@ -107,6 +117,21 @@ public class WindowRegister extends JFrame{
 			wCurrent.dispose();
 			wPrevious.setVisible(true);
 		});
+	    
+	    registerBotton.addActionListener(e ->{
+	    	if(passwordText.getText().equals(passwordConfirmationText.getText())) {
+	    		db_u.registerUsers(userText.getText(), passwordText.getText(), passwordConfirmationText.getText(), emailText.getText());
+	    		System.out.println("Te has registrado correctamente.");
+				JOptionPane.showMessageDialog(null, "Has sido registrado correctamente correctamente.");
+				wCurrent.dispose();
+				new WindowLogin(wCurrent); 
+	    	}
+	    	else{
+	    		JOptionPane.showMessageDialog(null, "Confirmación de contraseña incorrecto pruebelo de nuevo.");
+	    		vaciarCampos();
+	    		System.out.println("Las contraseñas no coinciden.");
+	    	}
+	    });
 	    
 		/* THREAD CREATE
 		 * Rotacion de texto que pone UD Students - CINEMA
@@ -132,5 +157,9 @@ public class WindowRegister extends JFrame{
 		Thread t = new Thread(r);
 		t.start();
 		setVisible(true);
+	}
+	public void vaciarCampos () {
+		passwordText.setText("");
+		passwordConfirmationText.setText("");
 	}
 }
