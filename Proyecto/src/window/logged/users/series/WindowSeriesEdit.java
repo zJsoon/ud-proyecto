@@ -101,6 +101,7 @@ public class WindowSeriesEdit extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				wPrevious.setVisible(true);
 			}
 		});
 		
@@ -113,7 +114,6 @@ public class WindowSeriesEdit extends JFrame {
 				JLabel lblFoto = (JLabel) pFoto.getComponent(0);
 				ImageIcon im = (ImageIcon) lblFoto.getIcon();
 				Series serie = CinemaCollections.getSeries(im.getDescription());
-				
 				new WindowSeriesEditPanel(u, serie);
 			}
 		});

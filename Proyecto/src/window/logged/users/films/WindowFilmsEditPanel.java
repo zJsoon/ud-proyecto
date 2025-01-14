@@ -50,7 +50,7 @@ import components.Users;
 			/*ADD COMPONENTS*/
 			lblFoto = new JLabel();
 			lblFoto.setSize(150,200);
-			ImageIcon port = new ImageIcon("./img/films/"+films.getImgCover());
+			ImageIcon port = new ImageIcon("img/films/"+films.getImgCover());
 			ImageIcon imgDimensions = new ImageIcon(port.getImage().getScaledInstance(lblFoto.getWidth(),lblFoto.getHeight(),Image.SCALE_DEFAULT));
 			imgDimensions.setDescription(films.getImgCover());
 			lblFoto.setIcon(imgDimensions);
