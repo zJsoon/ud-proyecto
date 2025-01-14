@@ -11,8 +11,11 @@ import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 
 import components.Users;
+import utils.collections.CinemaCollections;
 import utils.collections.DB;
 import utils.tablemodel.AdminTableModel;
+import utils.tablemodel.FilmsTableModel;
+import utils.tablemodel.SeriesTableModel;
 import utils.tablemodel.UsersTableModel;
 
 public class WindowAdmin extends JFrame{
@@ -22,13 +25,15 @@ public class WindowAdmin extends JFrame{
 	private JPanel pWest,pCenter;
 	private DefaultTreeModel treeModel;
 	private JTree tree;
-	private List<String> lAttributes = Arrays.asList("user", "admins", "series", "films", "series_user", "films_users");
+	private List<String> lAttributes = Arrays.asList("user", "admins", "series", "films");
 	private JScrollPane scrollTree;
 	
 	private UsersTableModel userModel;
 	private AdminTableModel adminModel;
-	private JTable userTabla, adminTabla;
-	private JScrollPane userScroll, adminScroll;
+	private SeriesTableModel serieModel;
+	private FilmsTableModel filmsModel;
+	private JTable userTabla, adminTabla, serieTabla, filmsTabla;
+	private JScrollPane userScroll, adminScroll, serieScroll, filmsScroll;
 	
 	public WindowAdmin(JFrame wPrevious, Users u) {
 		super();
@@ -68,6 +73,14 @@ public class WindowAdmin extends JFrame{
 		adminTabla = new JTable(adminModel);
 		adminScroll = new JScrollPane(adminTabla);
 		
+		serieModel = new SeriesTableModel(null);
+		serieTabla = new JTable(serieModel);
+		serieScroll = new JScrollPane(serieTabla);
+		
+		filmsModel = new FilmsTableModel(null);
+		filmsTabla = new JTable(filmsModel);
+		filmsScroll = new JScrollPane(filmsTabla);
+		
 		getContentPane().add(pWest, BorderLayout.WEST);
 		getContentPane().add(pCenter, BorderLayout.CENTER);
 		
@@ -83,17 +96,13 @@ public class WindowAdmin extends JFrame{
 				adminTabla.setModel(adminModel);	
 				getContentPane().add(adminScroll, BorderLayout.CENTER);
 			} else if (p.equals("series")) {
-                userModel = new UsersTableModel(null);
-                userTabla.setModel(userModel);
+				serieModel = new SeriesTableModel(CinemaCollections.getaSeries());
+				serieTabla.setModel(serieModel);
+				getContentPane().add(serieScroll, BorderLayout.CENTER);
             } else if (p.equals("films")) {
-                userModel = new UsersTableModel(null);
-                userTabla.setModel(userModel);
-            } else if (p.equals("series_users")) {
-                userModel = new UsersTableModel(null);
-                userTabla.setModel(userModel);
-            } else if (p.equals("films_users")) {
-                userModel = new UsersTableModel(null);
-                userTabla.setModel(userModel);
+                filmsModel = new FilmsTableModel(CinemaCollections.getaFilms());
+                filmsTabla.setModel(filmsModel);
+                getContentPane().add(filmsScroll, BorderLayout.CENTER);
             }
 		});
 		db_u.disconnectJDBC();
