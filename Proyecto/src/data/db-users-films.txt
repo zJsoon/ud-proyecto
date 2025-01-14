@@ -1,2 +1,3 @@
 123	rompeRalph.jpg	¡Rompe Ralph!	2012	5	101	5	La mejor pelicula del siglo
 123	arq.jpg	ARQ	2016	6	90	1	No me ha gustado nada
+admin	rompeRalph.jpg	¡Rompe Ralph!	2012	5	101
