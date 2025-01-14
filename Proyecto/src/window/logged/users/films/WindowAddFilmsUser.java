@@ -11,7 +11,7 @@ import components.Series;
 import components.Users;
 import utils.collections.CinemaCollections;
 
-@SuppressWarnings("unused") // Dejamos esta linea de codigo porque hay codigo comentado que utiliza los imports y al estar comentado salen warnigns
+
 public class WindowAddFilmsUser extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
@@ -90,7 +90,6 @@ public class WindowAddFilmsUser extends JFrame{
 		});
 		
 		/*MOUSE CLICKER SELECT IMG*/
-		//CODIGO FUNCIONAL, TENEMOS QUE ADAPTAR PARA QUE PASEN PARAMETROS DE USUARIO.
 		pCenter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

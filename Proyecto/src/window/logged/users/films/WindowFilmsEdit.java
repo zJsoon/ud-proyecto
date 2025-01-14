@@ -93,6 +93,7 @@ public class WindowFilmsEdit extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				wPrevious.setVisible(true);
 			}
 		});
 		
@@ -104,7 +105,6 @@ public class WindowFilmsEdit extends JFrame {
 				JPanel pFoto = (JPanel) pCenter.getComponentAt(p);
 				JLabel lblFoto = (JLabel) pFoto.getComponent(0);
 				ImageIcon im = (ImageIcon) lblFoto.getIcon();
-				System.out.println(im.getDescription());
 				Films films = CinemaCollections.getFilms(im.getDescription());
 				new WindowFilmsEditPanel(u, films);
 			}
