@@ -3,6 +3,7 @@ package window.logged.users;
 import java.awt.*;
 import javax.swing.*;
 
+import chat.WindowChat;
 import components.Users;
 import window.logged.users.films.WindowFilms;
 import window.logged.users.series.WindowSeries;
@@ -100,6 +101,14 @@ public class WindowLogged extends JFrame{
 		btn_series.addActionListener(e -> {
 			wCurrent.dispose();
 			new WindowSeries(wCurrent, u);
+		});
+		
+		/*
+		 * Boton que presionas y oculta la actual y posteriormente crea una nueva de chat
+		 */
+		btn_Chat.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowChat(wCurrent, u);
 		});
 		
 		/* THREAD CREATE
