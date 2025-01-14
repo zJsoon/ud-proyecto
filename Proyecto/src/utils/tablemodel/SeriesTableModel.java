@@ -11,7 +11,7 @@ public class SeriesTableModel extends DefaultTableModel{
 	private static final long serialVersionUID = 1L;
 	
 	private List<Series> lSeries;
-	private List<String> lTitulos = Arrays.asList("NOMBRE","TEMPORADAS","DURACION MEDIA");
+	private List<String> lTitulos = Arrays.asList("Title","Seasons","Average Duration");
 	
 	public SeriesTableModel(List<Series> ls) {
 		lSeries = ls;
