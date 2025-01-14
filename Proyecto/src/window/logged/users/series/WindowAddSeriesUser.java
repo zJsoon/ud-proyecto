@@ -57,7 +57,7 @@ public class WindowAddSeriesUser extends JFrame{
 		btnClose = new JButton("CLOSE");
 		pSouth.add(btnClose);
 		
-		loadFotos("data/db-series.txt");
+		loadFotos("src/data/db-series.txt");
 		
 		/*CREATE THREAD*/
 		Runnable r = new Runnable() {
@@ -89,7 +89,6 @@ public class WindowAddSeriesUser extends JFrame{
 		});
 		
 		/*MOUSE CLICKER SELECT IMG*/
-		/* CODIGO FUNCIONAL, TENEMOS QUE ADAPTAR PARA QUE PASEN PARAMETROS DE USUARIO.
 		pCenter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -99,8 +98,8 @@ public class WindowAddSeriesUser extends JFrame{
 				ImageIcon im = (ImageIcon) lblFoto.getIcon();
 				Series serie = CinemaCollections.getSeries(im.getDescription());
 				try {
-					PrintWriter pw = new PrintWriter(new FileWriter("data/db-users-series.txt", true));
-					Scanner sc = new Scanner(new File("data/db-users-series.txt"));
+					PrintWriter pw = new PrintWriter(new FileWriter("src/data/db-users-series.txt", true));
+					Scanner sc = new Scanner(new File("src/data/db-users-series.txt"));
 					while(sc.hasNextLine()) {
 						String linea = sc.nextLine();
 						String [] partes = linea.split("\t");
@@ -119,9 +118,10 @@ public class WindowAddSeriesUser extends JFrame{
 				} catch (IOException err) {
 					err.printStackTrace();
 				}
-				dispose(); 
+				dispose();
+				wPrevious.setVisible(true);
 			}
-		});*/
+		});
 		
 		/*VISIBILITY*/
 		setVisible(true);

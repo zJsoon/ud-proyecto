@@ -106,6 +106,11 @@ private static final long serialVersionUID = 1L;
 			new WindowAddSeriesUser(wCurrent, u);
 		});
 		
+		btnEditSeries.addActionListener(e -> {
+			wCurrent.dispose();
+			new WindowSeriesEdit(wCurrent, u);
+		});
+		
 		/*THREAD CREATION*/
 		Runnable r = new Runnable() {
 		    @Override
