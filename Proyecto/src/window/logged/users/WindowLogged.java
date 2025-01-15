@@ -17,7 +17,7 @@ public class WindowLogged extends JFrame {
 
     private JPanel pCenter, pCenterLeft, pCenterMid, pCenterRight, pNorth, pSouth, pEast, pWest;
 
-    private JButton btn_exit, btn_films, btn_series, btn_admin;
+    private JButton btn_exit, btn_films, btn_series, btn_admin, btn_chat;
 
     private JLabel lblNothText;
 
