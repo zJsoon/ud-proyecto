@@ -101,12 +101,12 @@ public class WindowLogged extends JFrame {
             new WindowSeries(wCurrent, u);
         });
 
-        /*btn_chat.addActionListener(e -> {
+        btn_chat.addActionListener(e -> {
             // Abre ventanas de ChatServer y ChatClient
             SwingUtilities.invokeLater(() -> {
                 new ChatServer();
                 new ChatClient();
-            });*/
+            });
         });
 
         /* THREAD CREATE */
