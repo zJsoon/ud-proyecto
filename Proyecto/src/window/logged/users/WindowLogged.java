@@ -72,7 +72,7 @@ public class WindowLogged extends JFrame {
             pCenterMid.add(btn_admin);
         }
         pCenterRight.add(btn_series);
-        /*pCenterRight.add(btn_chat);*/
+        pCenterRight.add(btn_chat);
 
         pCenter.add(pCenterLeft);
         pCenter.add(pCenterMid);
