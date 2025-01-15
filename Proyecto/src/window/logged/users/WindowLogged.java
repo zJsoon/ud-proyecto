@@ -17,7 +17,7 @@ public class WindowLogged extends JFrame {
 
     private JPanel pCenter, pCenterLeft, pCenterMid, pCenterRight, pNorth, pSouth, pEast, pWest;
 
-    private JButton btn_exit, btn_films, btn_series, btn_admin, btn_chat;
+    private JButton btn_exit, btn_films, btn_series, btn_admin;
 
     private JLabel lblNothText;
 
@@ -49,7 +49,7 @@ public class WindowLogged extends JFrame {
         btn_films = new JButton("Films");
         btn_series = new JButton("Series");
         btn_admin = new JButton("Admin");
-        btn_chat = new JButton("Chat");
+       /* btn_chat = new JButton("Chat");*/
 
         /* LABELS */
         lblNothText = new JLabel("UD Students - Films/Series");
@@ -72,7 +72,7 @@ public class WindowLogged extends JFrame {
             pCenterMid.add(btn_admin);
         }
         pCenterRight.add(btn_series);
-        pCenterRight.add(btn_chat);
+        /*pCenterRight.add(btn_chat);*/
 
         pCenter.add(pCenterLeft);
         pCenter.add(pCenterMid);
@@ -101,12 +101,12 @@ public class WindowLogged extends JFrame {
             new WindowSeries(wCurrent, u);
         });
 
-        btn_chat.addActionListener(e -> {
+        /*btn_chat.addActionListener(e -> {
             // Abre ventanas de ChatServer y ChatClient
             SwingUtilities.invokeLater(() -> {
                 new ChatServer();
                 new ChatClient();
-            });
+            });*/
         });
 
         /* THREAD CREATE */
