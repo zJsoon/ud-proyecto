@@ -49,7 +49,7 @@ public class WindowLogged extends JFrame {
         btn_films = new JButton("Films");
         btn_series = new JButton("Series");
         btn_admin = new JButton("Admin");
-       /* btn_chat = new JButton("Chat");*/
+        btn_chat = new JButton("Chat");
 
         /* LABELS */
         lblNothText = new JLabel("UD Students - Films/Series");
