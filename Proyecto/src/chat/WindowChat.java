@@ -20,6 +20,10 @@ public class WindowChat {
                 System.err.println("Error al iniciar el cliente: " + e.getMessage());
             }
         });
+        
+     // Iniciar los hilos
+        serverThread.start();
+        clientThread.start();
 	
     }
     
