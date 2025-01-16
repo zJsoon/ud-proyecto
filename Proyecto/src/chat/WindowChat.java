@@ -25,8 +25,6 @@ public class WindowChat {
         serverThread.start();
         clientThread.start();
 	
-    
-    
     try {
         serverThread.join();
         clientThread.join();
