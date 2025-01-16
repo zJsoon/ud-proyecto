@@ -10,6 +10,16 @@ public class WindowChat {
                 System.err.println("Error al iniciar el servidor: " + e.getMessage());
             }
         });
+        
+        //Ejecutar el hilo
+        Thread clientThread = new Thread(() -> {
+            try {
+                Thread.sleep(1000); // Dar tiempo al servidor para que se inicie
+                ChatClient.main(null);
+            } catch (Exception e) {
+                System.err.println("Error al iniciar el cliente: " + e.getMessage());
+            }
+        });
 	
     }
     
