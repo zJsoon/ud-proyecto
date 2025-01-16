@@ -104,7 +104,7 @@ public class WindowLogged extends JFrame {
         btn_chat.addActionListener(e -> {
             // Abre ventanas de ChatServer y ChatClient
             wCurrent.dispose();
-                new WindowChat(wCurrent,u);
+                new WindowChat();
             });   
         
 
