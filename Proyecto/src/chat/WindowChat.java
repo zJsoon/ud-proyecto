@@ -14,7 +14,7 @@ public class WindowChat {
         //Ejecutar el hilo
         Thread clientThread = new Thread(() -> {
             try {
-                Thread.sleep(1000); // Dar tiempo al servidor para que se inicie
+                Thread.sleep(1000);
                 ChatClient.main(null);
             } catch (Exception e) {
                 System.err.println("Error al iniciar el cliente: " + e.getMessage());
