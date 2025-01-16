@@ -106,7 +106,7 @@ public class WindowLogged extends JFrame {
             wCurrent.dispose();
                 new WindowChat(wCurrent,u);
             });   
-        });
+        
 
         /* THREAD CREATE */
         Runnable r = new Runnable() {
