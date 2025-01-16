@@ -25,8 +25,14 @@ public class WindowChat {
         serverThread.start();
         clientThread.start();
 	
+    
+    
+    try {
+        serverThread.join();
+        clientThread.join();
+    } catch (InterruptedException e) {
+        System.err.println("Error en la sincronización de hilos: " + e.getMessage());
     }
-    
-    
+}
 }
 
