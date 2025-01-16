@@ -3,8 +3,8 @@ package window.logged.users;
 import java.awt.*;
 import javax.swing.*;
 
-import chat.ChatClient;
-import chat.ChatServer;
+
+import chat.WindowChat;
 import components.Users;
 import window.logged.admin.WindowAdmin;
 import window.logged.users.films.WindowFilms;
@@ -103,10 +103,9 @@ public class WindowLogged extends JFrame {
 
         btn_chat.addActionListener(e -> {
             // Abre ventanas de ChatServer y ChatClient
-            SwingUtilities.invokeLater(() -> {
-                new ChatServer();
-                new ChatClient();
-            });
+            wCurrent.dispose();
+                new WindowChat(wCurrent,u);
+            });   
         });
 
         /* THREAD CREATE */
